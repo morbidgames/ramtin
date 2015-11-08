@@ -1,0 +1,366 @@
+body{
+	margin: 0px;
+	background-color: #f5f5f5;
+	min-width: 884px;
+}
+
+html,
+body {
+	margin:0;
+	padding:0;
+	height:100%;
+}
+
+::Selection{
+	background: #ee3434;
+	color: #fff;
+}
+
+::-moz-Selection{
+	background: #ee3434;
+	color: #fff;
+}
+
+a:link {
+	color: #373737;
+	text-decoration: underline;
+}
+a:visited {
+	text-decoration: underline;
+	color: #373737;
+}
+a:hover {
+	text-decoration: none;
+	color: #EE3434;
+}
+a:active {
+	text-decoration: underline;
+	color: #373737;
+}
+
+div.headerContainer{
+	background-color: #fff;
+	background-image: url(../images/logo.jpg);
+	background-repeat: no-repeat;
+	background-position: 104px 100px;
+	height: 48px;
+	padding-top: 187px;
+	width: 100%;
+}
+
+div.headerTabs{
+	width: 864px;
+	height: 43px;
+}
+
+div.headerFollowupTabs{
+	visibility: hidden;
+	position: fixed;
+	width: 100%;
+	background-color: #fff;
+}
+
+div.headerSeparator{
+	height: 5px;
+	width: 100%;
+	background-color: #ee3434;
+}
+
+div.tab{
+	height: 40px;
+	padding-top: 3px;
+	background-color: #fff;
+	font-family: Titillium Web;
+	font-size: 24px;
+	color: #373737;
+	width: 144px;
+	float: left;
+	cursor: default;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.tabSelected{
+	height: 40px;
+	padding-top: 3px;
+	background-color: #ee3434;
+	font-family: Titillium Web;
+	font-size: 24px;
+	color: #ffffff;
+	width: 144px;
+	float: left;
+	cursor: default;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.postsBody{
+	width: 864px;
+	background-color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 20px;
+	overflow: hidden;
+}
+
+div.postContainer{
+	width: 100%;
+	overflow: hidden;
+}
+
+div.postHeader{
+	width: 100%;
+	min-height: 50px;
+	overflow: hidden;
+}
+
+div.postHeaderTitle{
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 24px;
+	margin-right: 24px;
+	font-family: Titillium Web;
+	font-size: 24px;
+	font-weight: bold;
+	color: #ee3434;
+	overflow: hidden;
+}
+
+div.postHeaderSeparator{
+	width: 100%;
+	height: 2px;
+	background-color: #ee3434;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	overflow: hidden;
+}
+
+div.postBody{
+	width: 100%;
+}
+
+div.postBodyContent{
+	font-family: Titillium Web;
+	color: #373737;
+	font-size: 18px;
+	margin-left: 24px;
+	margin-right: 24px;
+	margin-bottom: 30px;
+	overflow: hidden;
+}
+
+img.globalImageStyle{
+	float: left;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-top: 20px;
+}
+
+div.footer{
+	height: 183px;
+	background-color: #ee3434;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	display: inline-table;
+}
+
+div.footerLeft{
+	height: 183px;
+	width: 218px;
+	display: table-cell;
+	vertical-align: middle;
+	padding-left: 27px;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.footerCenter{
+	height: 183px;
+	display: table-cell;
+	align-items: center;
+	color: #fff;
+	font-family: Titillium Web;
+	font-size: 18px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+div.footerRight{
+	width: 301px;
+	height: 183px;
+	background-image: url(../images/footer_logo.jpg);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	display: table-cell;
+}
+
+div.footerLeftIcon{
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin: 7px;
+}
+
+#wrapper{
+	position: relative;
+	min-height: 100%;
+}
+
+#content{
+	padding-bottom: 203px;
+}
+
+div.textboxOuter{
+	width: 445px;
+	height: 32px;
+	background-image: url(../images/textbox_left.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+div.textboxInner{
+	width: 445px;
+	height: 32px;
+	background-image: url(../images/textbox_right.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+input[type=text]{
+	height: 30px;
+	width: 100%;
+	background-color: #fff;
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+	border: 1px solid #b0b0b0;
+	outline-color: #ee3434;
+}
+
+input[type=submit]{
+	width: 130px;
+	height: 45px;
+	background-color: #ee3434;
+	display: block;
+	vertical-align: middle;
+	text-align: center;
+	font-family: Titillium Web;
+	color: #fff;
+	font-size: 18px;
+	border: 0;
+	outline: 0;
+}
+
+div.commentLabel{
+	height: 42px;
+	width: 100%;
+	font-family: Titillium Web;
+	font-size: 18px;
+	color: #373737;
+	vertical-align: middle;
+	display: block;
+	cursor: default;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.textareaOuter{
+	width: 445px;
+	height: 145px;
+	background-image: url(../images/textarea_left.jpg);
+	background-repeat: no-repeat;
+	background-position: left;
+}
+
+div.textareaInner{
+	width: 445px;
+	height: 145px;
+	background-image: url(../images/textarea_right.jpg);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+textarea{
+	height: 141px;
+	width: 100%;
+	background-color: #fff;
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+	border: 1px solid #b0b0b0;
+	resize: none;
+	outline-color: #ee3434;
+}
+
+div.notificationHeader{
+	word-wrap: break-word;
+	font-family: Titillium Web;
+	font-size: 18px;
+	color: #ee3434;
+}
+
+div.notificationContent{
+	word-wrap: break-word;
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+	margin-top: 5px;
+}
+
+div.commentTitle{
+	width: 100%;
+	color: #ee3434;
+	font-family: Titillium Web;
+	font-size: 18px;
+	font-weight: bold;
+	cursor: default;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.commentHeader{
+	width: 100%;
+	margin-top: 15px;
+}
+
+div.commenterName{
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #5F5F5F;
+	text-align: left;
+	width: 50%;
+	float: left;
+}
+
+div.commentDate{
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #5F5F5F;
+	text-align: right;
+	width: 50%;
+	float: right;
+}
+
+div.commentContent{
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+	margin-left: 30px;
+	margin-top: 50px;
+	word-wrap: break-word;
+}
+
+div.commentSeparator{
+	width: 100%;
+	height: 1px;
+	margin-top: 15px;
+	background-color: #b0b0b0;
+}
