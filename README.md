@@ -7,3 +7,4 @@ Much has to be done before the website would be ready to go online, including:
   * Making every page work with the system.
   * Finishing the website.
   * Creating a personal Windows-based CMS (Content Management System) in C# to manage the databases.
+  * Creating web version of the CMS with simpler GUI.
