@@ -110,6 +110,15 @@ function displayComment(cmName, cmDate, cmContent)
 	box.innerHTML += '<div class="commentHeader"><div class="commenterName"><font color="ee3434">' + cmName + '</font> said:</div><div class="commentDate">' + cmDate + '</div></div><div style="width: 100%;"><div class="commentContent">' + cmContent + '</div></div><div class="commentSeparator"></div>';
 }
 
+function displayPost(title, content)
+{
+	var element = document.getElementById("postsBody");
+
+	element.innerHTML = '<div class="postContainer"><div class="postHeader"><div class="postHeaderTitle">'
+	 + title + '</div><div class="postHeaderSeparator"></div></div><div class="postBody"><div class="postBodyContent">'
+	 + content.slice(1, content.length - 2) + '</div></div></div>';
+}
+
 function submitButtonOver(buttonID)
 {
 	var button = document.getElementById(buttonID);

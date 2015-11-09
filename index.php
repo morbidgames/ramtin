@@ -5,7 +5,26 @@
         <title>Ramtin's Online Resume</title>
         <link href="resources/styles.css" rel="stylesheet" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
-        <link href ="images/favicon.png" rel="shortcut icon">
+        <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
+        <link rel="apple-touch-icon" sizes="60x60" href="/images/apple-touch-icon-60x60.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="/images/apple-touch-icon-72x72.png">
+        <link rel="apple-touch-icon" sizes="76x76" href="/images/apple-touch-icon-76x76.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="/images/apple-touch-icon-114x114.png">
+        <link rel="apple-touch-icon" sizes="120x120" href="/images/apple-touch-icon-120x120.png">
+        <link rel="apple-touch-icon" sizes="144x144" href="/images/apple-touch-icon-144x144.png">
+        <link rel="apple-touch-icon" sizes="152x152" href="/images/apple-touch-icon-152x152.png">
+        <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-180x180.png">
+        <link rel="icon" type="image/png" href="/images/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/images/android-chrome-192x192.png" sizes="192x192">
+        <link rel="icon" type="image/png" href="/images/favicon-96x96.png" sizes="96x96">
+        <link rel="icon" type="image/png" href="/images/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/images/manifest.json">
+        <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#ea3433">
+        <link rel="shortcut icon" href="/images/favicon.ico">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="msapplication-TileImage" content="/images/mstile-144x144.png">
+        <meta name="msapplication-config" content="/images/browserconfig.xml">
+        <meta name="theme-color" content="#ea3433">
         <script type="text/javascript" src="resources/scripts.js"></script>
     </head>
     <body>
@@ -39,22 +58,27 @@
                 <div class="headerSeparator"></div>
             </div>
             <div id="content">
-                <div class="postsBody">
+                <div class="postsBody" id="postsBody">
                     <!--post-->
-                    <div class="postContainer">
-                        <div class="postHeader">
-                            <div class="postHeaderTitle">New game "Death Truck" under developement</div>
-                            <div class="postHeaderSeparator"></div>
-                        </div>
-                        <div class="postBody">
-                            <div class="postBodyContent">
-                                <img src="images/death_truck_titleDisplay.jpg" width="400" height="140"" class="globalImageStyle" />
-                                <p class="postBodyContentParagraph">The work for another Construct2 game '<a href="http://ramt.in">Death Truck</a>' has been started.</p>
-                                <p class="postBodyContentParagraph">I've had the idea since a few weeks ago and I'm amazed that how much it had developed into better shapes and more complex gameplay ideas only through the first weeks that I've started working on the graphics and the game codes/logic.</p>
-                                <p class="postBodyContentParagraph">I'm actually done with the truck and pedestrian graphics and movement codes (plus the interaction code between pedestrians and the truck) and have included the game in the projects page as a Work In Progress. You can check some of the graphics and the idea of the whole game (plus some gameplay ideas) in the projects page.</p>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                        //Connect to Database
+                        $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
+
+                        //Read each row from posts table
+                        foreach($db->query('SELECT * FROM posts') as $row)
+                        {
+                            $qtitle = $row['title'];
+                            $qcontent = $row['content'];
+                            $qpage = $row['page_id'];
+
+                            //Encode & escape special characters in HTML content read from Database
+                            $qcontent = json_encode(utf8_encode($qcontent));
+                            $qcontent = str_replace("'", "\'", $qcontent);
+
+                            //Pass to Javascript function to display data in form of post
+                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qcontent');</script>";
+                        }
+                    ?>
                     <!--/post-->
                 </div>
             </div>
