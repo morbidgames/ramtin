@@ -70,15 +70,16 @@
                             $qtitle = $row['title'];
                             $qcontent = $row['content'];
                             $qpage = $row['page_id'];
-                            if($qpage == 'home')
-                            {
-                                //Encode & escape special characters in HTML content read from Database
-                                $qcontent = json_encode(utf8_encode($qcontent));
-                                $qcontent = str_replace("'", "\'", $qcontent);
+                            
+                            if($qpage != 'home')
+                                continue;
 
-                                //Pass to Javascript function to display data in form of post
-                                echo "<script type='text/javascript'>displayPost('$qtitle', '$qcontent');</script>";
-                            }
+                            //Encode & escape special characters in HTML content read from Database
+                            $qcontent = json_encode(utf8_encode($qcontent));
+                            $qcontent = str_replace("'", "\'", $qcontent);
+
+                            //Pass to Javascript function to display data in form of post
+                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qcontent');</script>";
                         }
                     ?>
                     <!--/post-->

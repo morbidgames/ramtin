@@ -114,7 +114,7 @@ function displayPost(title, content)
 {
 	var element = document.getElementById("postsBody");
 
-	element.innerHTML = '<div class="postContainer"><div class="postHeader"><div class="postHeaderTitle">'
+	element.innerHTML += '<div class="postContainer"><div class="postHeader"><div class="postHeaderTitle">'
 	 + title + '</div><div class="postHeaderSeparator"></div></div><div class="postBody"><div class="postBodyContent">'
 	 + content.slice(1, content.length - 2) + '</div></div></div>';
 }
