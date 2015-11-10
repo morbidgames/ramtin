@@ -112,34 +112,37 @@
 				}
 				else
 				{
-					mysql_connect("ramtin.ipagemysql.com", "ramtin", "Immol@tion13");
-					mysql_select_db("c0mments");
-					mysql_query("INSERT INTO comments (id, url, name, email, comment, date) VALUES ('', '$currentURL', '$name', '$email', '$comment', '$date')");
+                    //Connect to Database
+                    $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
+					
+                    //Insert into 'comments'
+                    $ins = $db->prepare("INSERT INTO comments(id,name,email,comment,post_id) VALUES(:field1,:field2,:field3,:field4,:field5)");
+                    $ins->execute(array(':field1' => '', ':field2' => $name, ':field3' => $email, ':field4' => $comment, ':field5' => ''));
 				}
 			}
 		}
     }
 ?>
 <?php
-	mysql_connect('ramtin.ipagemysql.com', 'ramtin', 'Immol@tion13');
-	mysql_select_db('c0mments');
-	$run = mysql_query('SELECT * FROM comments ORDER BY id DESC');
-	$rows = mysql_num_rows($run);
-	if ($rows > 0)
-	{
-		while ($row = mysql_fetch_assoc($run))
-		{
-			$dbname = $row['name'];
-			$dbcomment = $row['comment'];
-			$dbdate = $row['date'];
-			$dbcommentURL = $row['url'];
-			
-			if ($dbcommentURL == "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]")
-			{
-				$dbcomment = preg_replace('/\v+|\\\[rn]/','<br/>', $dbcomment);
-				echo "<script type='text/javascript'>displayComment('$dbname', '$dbdate', '$dbcomment');</script>";
-			}
-		}
-	}
+	//Connect to Database
+    $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
+
+    //Read each row from posts table
+    foreach($db->query('SELECT * FROM comments') as $row)
+    {
+        $qname = $row['name'];
+        $qcomment = $row['comment'];
+        $qdate = $row['date'];
+        $qpost_id = $row['post_id'];
+
+        if($qpost_id != '')
+            continue;
+
+        //Encode & escape special characters in HTML content read from Database
+        $qcomment = json_encode(utf8_encode($qcomment));
+        $qcomment = str_replace("'", "\'", $qcomment);
+
+        echo "<script type='text/javascript'>displayComment('$qname', '$qdate', '$qcomment');</script>";
+    }
 ?>
 </html>
