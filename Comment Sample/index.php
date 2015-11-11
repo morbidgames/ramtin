@@ -46,7 +46,7 @@
                 	<textarea id="comments" name="comment" maxlength="200" onChange="showLettersLeft('comments', 'lettersCount');" onKeyUp="showLettersLeft('comments', 'lettersCount');" onKeyDown="showLettersLeft('comments', 'lettersCount');"></textarea>
                     <!--Captcha/Submit/Letters Left-->
                     <div style="width: 315px; float: left; padding-top: 8px;">
-                    	<div class="g-recaptcha" data-sitekey="6Lf2Ag0TAAAAAJiW7vTfS_xlz4fBi5wa7HE6LTvj"></div>
+                    	<div class="g-recaptcha" data-sitekey="6LfzshATAAAAAPyQ8eprXUJGSuKu2aDIeg4fRMdY"></div>
                     </div>
                     <div style="width: 130px; float: left;">
                     	<div style="width: 100%; height: 36px; font-size: 14px; color: #373737; font-family: Titillium Web; text-align: right;" id="lettersCount">
@@ -83,7 +83,6 @@
 		$timezone = new DateTime('', new DateTimeZone('America/Los_Angeles'));
 		$date = $timezone->format('F jS, Y (h:i A)');
 		$captcha = $_POST['g-recaptcha-response'];
-		$currentURL = "$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		
 		if(!$captcha)
 		{
@@ -138,7 +137,8 @@
         if($qpost_id != '')
             continue;
 
-        //Encode & escape special characters in HTML content read from Database
+        //Encode & escape special characters in comment read from Database
+        $qcomment = preg_replace('/\v+|\\\[rn]/','<br/>', $qcomment);
         $qcomment = json_encode(utf8_encode($qcomment));
         $qcomment = str_replace("'", "\'", $qcomment);
 

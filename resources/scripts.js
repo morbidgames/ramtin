@@ -109,7 +109,7 @@ function displayComment(cmName, cmDate, cmContent)
 	
 	box.innerHTML += '<div class="commentHeader"><div class="commenterName"><font color="ee3434">'
 	 + cmName + '</font> said:</div><div class="commentDate">'
-	 + cmDate + '</div></div><div style="width: 100%;"><div class="commentContent">'
+	 + cmDate + '</div></div><div style="width: 750px; margin-right: auto; margin-left: auto;"><div class="commentContent">'
 	 + cmContent.slice(1, cmContent.length - 1) + '</div></div><div class="commentSeparator"></div>';
 }
 
@@ -138,4 +138,117 @@ function submitButtonOut(buttonID)
 	button.style.border = '';
 	button.style.backgroundColor = '';
 	button.style.color = '';
+}
+
+function getEmo(emoText)
+{
+	//Determine if emoText is tag [smile] or icon :)
+	var isTag = (emoText.substr(0, 1) == "[" && emoText.substr(emoText.length - 1, 1) == "]");
+
+	if (isTag)
+		return ('<img src="images/emoticons/' + emoText.substr(1, emoText.length - 2) + '.png" style="margin-bottom: -3px;"/>');
+
+	var emoName = "";
+
+	switch (emoText)
+	{
+		case ":|":
+			emoName = "ambivalent";
+			break;
+		case "X(":
+			emoName = "angry";
+			break;
+		case ":S", ":s":
+			emoName = "confused";
+			break;
+		case "/:)":
+			emoName = "content";
+			break;
+		case "B)":
+			emoName = "cool";
+			break;
+		case ";P", ";p":
+			emoName = "crazy";
+			break;
+		case ":'(":
+			emoName = "cry";
+			break;
+		case "(:(":
+			emoName = "embarrassed";
+			break;
+		case "<:(":
+			emoName = "footinmouth";
+			break;
+		case ":(":
+			emoName = "frown";
+			break;
+		case ":o", ":O":
+			emoName = "gasp";
+			break;
+		case ":D":
+			emoName = "grin";
+			break;
+		case "<3":
+			emoName = "heart";
+			break;
+		case "&)":
+			emoName = "hearteyes";
+			break;
+		case "o:)", "O:)":
+			emoName = "innocent";
+			break;
+		case ":*":
+			emoName = "kiss";
+			break;
+		case ":))":
+			emoName = "laughing";
+			break;
+		case ":<":
+			emoName = "minifrown";
+			break;
+		case ":>":
+			emoName = "minismile";
+			break;
+		case ":$":
+			emoName = "moneymouth";
+			break;
+		case "3:)":
+			emoName = "naughty";
+			break;
+		case "8)":
+			emoName = "nerd";
+			break;
+		case "':/":
+			emoName = "notamused";
+			break;
+		case ";D":
+			emoName = "sarcastic";
+			break;
+		case ":X", ":x":
+			emoName = "sealed";
+			break;
+		case ":/":
+			emoName = "slant";
+			break;
+		case ":)":
+			emoName = "smile";
+			break;
+		case "(n)":
+			emoName = "thumbsdown";
+			break;
+		case "(y)":
+			emoName = "thumbsup";
+			break;
+		case ";)":
+			emoName = "wink";
+			break;
+		case ":p", ":P":
+			emoName = "yuck";
+			break;
+		case ":b":
+			emoName ="yum";
+			break;
+	}
+
+	return ('<img src="images/emoticons/' + emoName + '.png" style="margin-bottom: -3px;"/>');
 }
