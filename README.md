@@ -3,6 +3,7 @@ This repository is for 'ramt.in' website development currenty on WAMP before goi
 Much has to be done before the website would be ready to go online, including:
 
 - [x] Working out an SQL/PHP database system to show the contents of the website.
+- [ ] Adding emoticons to Comments.
 - [ ] Finishing the design of website.
 - [ ] Making every page work with the system.
 - [ ] Finishing the website.
