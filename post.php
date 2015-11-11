@@ -198,8 +198,10 @@
             }
             else
             {
-                $response=file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6Lf2Ag0TAAAAABwH9he1oeyAZ1-Dp_8VmlIwJYB8&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-                if ($response.success == false)
+                $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfzshATAAAAACEIkKtfsZFNlwFM387rrmqA954c&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
+                $responseData = json_decode($response);
+
+                if (!$responseData->success)
                 {
                     echo '<script type="text/javascript">displayError(3);</script>';
                 }
