@@ -1,6 +1,7 @@
 // JavaScript Document
 
 window.onscroll = function() {scrollTabsPlacement()};
+document.onmousewheel = function() {scrollTabsPlacement()};
 
 function selectTab(tabID, deselect)
 {
@@ -12,7 +13,7 @@ function selectTab(tabID, deselect)
 
 function scrollTabsPlacement()
 {
-	if (window.scrollY > 187)
+	if (window.pageYOffset > 187)
 		document.getElementById("headerFollowup").style.visibility = "visible";
 	else
 		document.getElementById("headerFollowup").style.visibility = "hidden";
@@ -110,7 +111,7 @@ function displayComment(cmName, cmDate, cmContent)
 	box.innerHTML += '<div class="commentHeader"><div class="commenterName"><font color="ee3434">'
 	 + cmName + '</font> said:</div><div class="commentDate">'
 	 + cmDate + '</div></div><div style="width: 750px; margin-right: auto; margin-left: auto;"><div class="commentContent">'
-	 + cmContent.slice(1, cmContent.length - 1) + '</div></div><div class="commentSeparator"></div>';
+	 + placeEmos(cmContent.slice(1, cmContent.length - 1)) + '</div></div><div class="commentSeparator"></div>';
 }
 
 function displayPost(title, content)
@@ -156,9 +157,11 @@ function getEmo(emoText)
 			emoName = "ambivalent";
 			break;
 		case "X(":
+		case "x(":
 			emoName = "angry";
 			break;
-		case ":S", ":s":
+		case ":S":
+		case ":s":
 			emoName = "confused";
 			break;
 		case "/:)":
@@ -167,7 +170,8 @@ function getEmo(emoText)
 		case "B)":
 			emoName = "cool";
 			break;
-		case ";P", ";p":
+		case ";P":
+		case ";p":
 			emoName = "crazy";
 			break;
 		case ":'(":
@@ -182,7 +186,8 @@ function getEmo(emoText)
 		case ":(":
 			emoName = "frown";
 			break;
-		case ":o", ":O":
+		case ":o":
+		case ":O":
 			emoName = "gasp";
 			break;
 		case ":D":
@@ -194,7 +199,8 @@ function getEmo(emoText)
 		case "&)":
 			emoName = "hearteyes";
 			break;
-		case "o:)", "O:)":
+		case "o:)":
+		case "O:)":
 			emoName = "innocent";
 			break;
 		case ":*":
@@ -224,7 +230,8 @@ function getEmo(emoText)
 		case ";D":
 			emoName = "sarcastic";
 			break;
-		case ":X", ":x":
+		case ":X":
+		case ":x":
 			emoName = "sealed";
 			break;
 		case ":/":
@@ -242,7 +249,8 @@ function getEmo(emoText)
 		case ";)":
 			emoName = "wink";
 			break;
-		case ":p", ":P":
+		case ":p":
+		case ":P":
 			emoName = "yuck";
 			break;
 		case ":b":
@@ -251,4 +259,67 @@ function getEmo(emoText)
 	}
 
 	return ('<img src="images/emoticons/' + emoName + '.png" style="margin-bottom: -3px;"/>');
+}
+
+function placeEmos(comment)
+{
+	if(comment.trim() == "")
+		return "";
+	
+	var foundIndex = 0, lastIndex = 0, prevChar = 0, nextChar = 0, foundLength = 0, leftEndFlag = false, rightEndFlag = false, tagFlag = false, totalLength = comment.length, i;
+	var emos = ["[ambivalent]", "[angry]", "[confused]", "[content]", "[cool]", "[crazy]", "[cry]", "[embarrassed]",
+	"[footinmouth]", "[frown]", "[gasp]", "[grin]", "[heart]", "[hearteyes]", "[innocent]", "[kiss]", "[laughing]",
+	"[minifrown]", "[minismile]", "[moneymouth]", "[naughty]", "[nerd]", "[notamused]", "[sarcastic]", "[sealed]",
+	"[slant]", "[smile]", "[thumbsdown]", "[thumbsup]", "[wink]", "[yuck]", "[yum]", ":|", "X(", "x(", ":S", ":s", "/:)",
+	"B)", ";p", ";P", ":'(", "(:(", "<:(", ":(", ":o", ":O", ":D", "<3", "&)", "o:)", "O:)", ":*", ":))", ":<", ":>",
+	":$", "3:)", "8)", "':/", ";D", ":x", ":X", ":/", ":)", "(n)", "(y)", ";)", ":p", ":P", ":b"];
+
+	for(i = 0; i < emos.length; i++)
+	{
+		lastIndex = 0;
+		foundIndex = 0;
+		prevChar = 0;
+		nextChar = 0;
+		foundLength = 0;
+		leftEndFlag = false;
+		rightEndFlag = false;
+		tagFlag = false;
+
+		while(foundIndex > -1)
+		{
+			foundIndex = comment.indexOf(emos[i], lastIndex);
+			
+			if(foundIndex == -1)
+				break;
+
+			foundLength = emos[i].length;
+			nextChar = foundIndex + foundLength;
+			prevChar = foundIndex - 1;
+
+			if(nextChar + 1 > totalLength)
+				nextChar = -1;
+
+			if(emos[i].substr(0, 1) == "[")
+				tagFlag = true;
+
+			if(prevChar < 0 || comment.substr(prevChar, 1) == " " || ((foundIndex > 4) && (comment.substr(prevChar - 4, 5) == "<br/>")))
+				leftEndFlag = true;
+
+			if(nextChar == -1 || comment.substr(nextChar, 1) == " " || ((nextChar + 4 <= totalLength) && (comment.substr(nextChar, 5) == "<br/>")))
+				rightEndFlag = true;
+			
+			if(tagFlag || (leftEndFlag && rightEndFlag))
+			{
+				var emoCode = getEmo(emos[i]);
+				comment = comment.replace(emos[i], emoCode);
+				lastIndex = foundIndex + (emoCode.length - foundLength) + 1;
+				totalLength = comment.length;
+				leftEndFlag = false;
+				rightEndFlag = false;
+				tagFlag = false;
+			}
+		}
+	}
+
+	return comment;
 }
