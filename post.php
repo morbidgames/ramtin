@@ -93,16 +93,6 @@
                             <div class="commentTitle">COMMENTS</div>
                             <div class="postHeaderSeparator"></div>
                         </div>
-                        <!-- Comment Display Code
-                            <div class="commentHeader">
-                                <div class="commenterName"><font color="ee3434">Name</font> said:</div>
-                                <div class="commentDate">Date & Time</div>
-                            </div>
-                            <div style="width: 100%;">
-                                <div class="commentContent">Comment</div>
-                            </div>
-                            <div class="commentSeparator"></div>
-                        -->
                     </div>
                     <div class="commentSection">
                         <!--Lables-->
@@ -233,18 +223,14 @@
             $captcha = $_POST['g-recaptcha-response'];
             
             if(!$captcha)
-            {
                 echo '<script type="text/javascript">displayError(2);</script>';
-            }
             else
             {
                 $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfzshATAAAAACEIkKtfsZFNlwFM387rrmqA954c&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
                 $responseData = json_decode($response);
 
                 if (!$responseData->success)
-                {
                     echo '<script type="text/javascript">displayError(3);</script>';
-                }
                 else
                 {
                     $name = trim($name);
@@ -254,13 +240,11 @@
                     $comment = strip_tags($comment);
                     
                     if ($name == "" || $email == "" || $comment == "")
-                    {
                         echo '<script type="text/javascript">displayError(0);</script>';
-                    }
                     elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
-                    {
                         echo '<script type="text/javascript">displayError(1);</script>';
-                    }
+                    elseif (preg_replace('/(\v+|\r\n+| +|\[bold\]+|\[\/bold\]+|\[italic\]+|\[\/italic\]+)/','', $comment) == "")
+                        echo '<script type="text/javascript">displayError(4);</script>';
                     else
                     {
                         //Connect to Database
