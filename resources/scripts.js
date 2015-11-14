@@ -8,6 +8,9 @@ function insertFormatTag(formatType, commentBox)
 	var cmBox = document.getElementById(commentBox);
 	var preStart = cmBox.selectionStart, preEnd = cmBox.selectionEnd;
 
+	if (((formatType.length * 2) + 5 + cmBox.value.length) > cmBox.maxLength)
+		return;
+
 	cmBox.value = cmBox.value.slice(0, cmBox.selectionStart) +
 	 "[" + formatType + "]" +
 	 cmBox.value.substr(cmBox.selectionStart, cmBox.selectionEnd - cmBox.selectionStart) +
@@ -16,6 +19,8 @@ function insertFormatTag(formatType, commentBox)
 
 	if(preStart == preEnd)
 		cmBox.selectionStart = (cmBox.selectionEnd = (preStart + formatType.length + 2));
+
+	showLettersLeft('comments', 'lettersCount');
 }
 
 function formatShortcut(e, commentBox)
@@ -53,7 +58,12 @@ function insertEmo(emoTag, commentBox)
 {
 	var cmBox = document.getElementById(commentBox);
 
+	if (emoTag.length + 2 + cmBox.value.length > cmBox.maxLength)
+		return;
+
 	cmBox.value = cmBox.value.slice(0, cmBox.selectionStart) + "[" + emoTag + "]" + cmBox.value.slice(cmBox.selectionEnd, cmBox.value.length);
+
+	showLettersLeft(commentBox, 'lettersCount');
 }
 
 function scrollTabsPlacement()

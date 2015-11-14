@@ -187,29 +187,50 @@ div.commentFormattingBox{
 
 div.formatBold{
 	background-image: url(../images/format_bold.jpg);
-	transition: background-image 0.5s;
-}
-
-div.formatBold:hover{
-	background-image: url(../images/format_bold_hover.jpg);
 }
 
 div.formatItalic{
 	background-image: url(../images/format_italic.jpg);
-	transition: background-image 0.5s;
-}
-
-div.formatItalic:hover{
-	background-image: url(../images/format_italic_hover.jpg);
 }
 
 div.formatEmo{
 	background-image: url(../images/format_emo.jpg);
-	transition: background-image 0.5s;
 }
 
-div.formatEmo:hover{
+div.formatBoldHover{
+	background-image: url(../images/format_bold_hover.jpg);
+	opacity: 0;
+	width: 32px;
+	height: 32px;
+	transition: opacity 0.5s;
+}
+
+div.formatBoldHover:hover{
+	opacity: 1;
+}
+
+div.formatItalicHover{
+	background-image: url(../images/format_italic_hover.jpg);
+	opacity: 0;
+	width: 32px;
+	height: 32px;
+	transition: opacity 0.5s;
+}
+
+div.formatItalicHover:hover{
+	opacity: 1;
+}
+
+div.formatEmoHover{
 	background-image: url(../images/format_emo_hover.jpg);
+	opacity: 0;
+	width: 32px;
+	height: 32px;
+	transition: opacity 0.5s;
+}
+
+div.formatEmoHover:hover{
+	opacity: 1;
 }
 
 div.emoBox{

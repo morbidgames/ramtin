@@ -111,9 +111,15 @@
                                     <input type="text" placeholder="example@email.com" name="email">
                                 </div>
                                 <div class="commentFormRow">
-                                    <div class="commentFormattingBox formatBold" onmousedown="insertFormatTag('bold', 'comments');" title="Alt+A"></div>
-                                    <div class="commentFormattingBox formatItalic" onmousedown="insertFormatTag('italic', 'comments');" title="Alt+I"></div>
-                                    <div class="commentFormattingBox formatEmo" onclick="switchEmoBox();"></div>
+                                    <div class="commentFormattingBox formatBold" onmousedown="insertFormatTag('bold', 'comments');" title="Alt+A">
+                                        <div class="formatBoldHover"></div>
+                                    </div>
+                                    <div class="commentFormattingBox formatItalic" onmousedown="insertFormatTag('italic', 'comments');" title="Alt+I">
+                                        <div class="formatItalicHover"></div>
+                                    </div>
+                                    <div class="commentFormattingBox formatEmo" onclick="switchEmoBox();">
+                                        <div class="formatEmoHover"></div>
+                                    </div>
                                 </div>
                                     <div class="emoBox" id="emoBox">
                                         <div class="emoBoxItem" title="[ambivalent] or :|" onclick="insertEmo('ambivalent', 'comments')"><img src="images/emoticons/ambivalent.png"/></div>
