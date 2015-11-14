@@ -33,12 +33,12 @@
             <div class="headerFollowupTabs" id="headerFollowup">
                 <center>
                     <div class="headerTabs">
-                        <div class="tabSelected" id="ftab1">Home</div>
-                        <div class="tab" id="ftab2" onMouseOver="selectTab('ftab2', false);" onMouseOut="selectTab('ftab2', true);">Resume</div>
-                        <div class="tab" id="ftab3" onMouseOver="selectTab('ftab3', false);" onMouseOut="selectTab('ftab3', true);">Projects</div>
-                        <div class="tab" id="ftab4" onMouseOver="selectTab('ftab4', false);" onMouseOut="selectTab('ftab4', true);">Designs</div>
-                        <div class="tab" id="ftab5" onMouseOver="selectTab('ftab5', false);" onMouseOut="selectTab('ftab5', true);">About</div>
-                        <div class="tab" id="ftab6" onMouseOver="selectTab('ftab6', false);" onMouseOut="selectTab('ftab6', true);">Contact</div>
+                        <div class="tabSelected">Home</div>
+                        <div class="tab">Resume</div>
+                        <div class="tab">Projects</div>
+                        <div class="tab">Designs</div>
+                        <div class="tab">About</div>
+                        <div class="tab">Contact</div>
                     </div>
                 </center>
                 <div class="headerSeparator"></div>
@@ -48,11 +48,11 @@
                 <center>
                     <div class="headerTabs">
                         <div class="tabSelected" id="tab1">Home</div>
-                        <div class="tab" id="tab2" onMouseOver="selectTab('tab2', false);" onMouseOut="selectTab('tab2', true);">Resume</div>
-                        <div class="tab" id="tab3" onMouseOver="selectTab('tab3', false);" onMouseOut="selectTab('tab3', true);">Projects</div>
-                        <div class="tab" id="tab4" onMouseOver="selectTab('tab4', false);" onMouseOut="selectTab('tab4', true);">Designs</div>
-                        <div class="tab" id="tab5" onMouseOver="selectTab('tab5', false);" onMouseOut="selectTab('tab5', true);">About</div>
-                        <div class="tab" id="tab6" onMouseOver="selectTab('tab6', false);" onMouseOut="selectTab('tab6', true);">Contact</div>
+                        <div class="tab">Resume</div>
+                        <div class="tab">Projects</div>
+                        <div class="tab">Designs</div>
+                        <div class="tab">About</div>
+                        <div class="tab">Contact</div>
                     </div>
                 </center>
                 <div class="headerSeparator"></div>
@@ -70,7 +70,7 @@
                             $qtitle = $row['title'];
                             $qcontent = $row['content'];
                             $qpage = $row['page_id'];
-                            
+
                             if($qpage != 'home')
                                 continue;
 

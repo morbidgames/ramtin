@@ -76,9 +76,14 @@ div.tab{
 	width: 144px;
 	float: left;
 	cursor: default;
+	transition: color 0.5s;
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
+}
+
+div.tab:hover{
+	color: #ee3434;
 }
 
 div.tabSelected{
@@ -102,6 +107,7 @@ div.postsBody{
 	margin-left: auto;
 	margin-right: auto;
 	margin-top: 20px;
+	padding-bottom: 30px;
 	overflow: hidden;
 }
 
@@ -154,9 +160,86 @@ div.postBodyContent{
 
 img.globalImageStyle{
 	float: left;
-	margin-right: 10px;
-	margin-bottom: 10px;
+	margin-right: 20px;
+	margin-bottom: 20px;
 	margin-top: 20px;
+}
+
+div.commentSection{
+	width: 794px;
+	padding-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.commentFormRow{
+	width: 100%;
+	height: 30px;
+	padding-bottom: 10px;
+}
+
+div.commentFormattingBox{
+	width: 32px;
+	height: 32px;
+	margin-right: 8px;
+	float: left;
+}
+
+div.formatBold{
+	background-image: url(../images/format_bold.jpg);
+	transition: background-image 0.5s;
+}
+
+div.formatBold:hover{
+	background-image: url(../images/format_bold_hover.jpg);
+}
+
+div.formatItalic{
+	background-image: url(../images/format_italic.jpg);
+	transition: background-image 0.5s;
+}
+
+div.formatItalic:hover{
+	background-image: url(../images/format_italic_hover.jpg);
+}
+
+div.formatEmo{
+	background-image: url(../images/format_emo.jpg);
+	transition: background-image 0.5s;
+}
+
+div.formatEmo:hover{
+	background-image: url(../images/format_emo_hover.jpg);
+}
+
+div.emoBox{
+	width: 449px;
+	height: 0px;
+	padding-left: 3px;
+	padding-right: 3px;
+	margin-bottom: 0px;
+	background-color: #fff;
+	overflow: hidden;
+	opacity: 0;
+	transition: height 0.5s, opacity 0.5s, margin-bottom 0.5s;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.emoBoxItem{
+	width: 18px;
+	height: 18px;
+	padding: 4px;
+	float: left;
+	background-color: #fff;
+	opacity: 0.5;
+	transition: background-color 0.25s, opacity 0.25s;
+}
+
+div.emoBoxItem:hover{
+	background-color: #ddd;
+	opacity: 1;
 }
 
 div.footer{
@@ -240,6 +323,15 @@ input[type=submit]{
 	font-size: 18px;
 	border: 0;
 	outline: 0;
+	transition: background-color 0.5s;
+	transition: border 0.5s;
+	transition: color 0.5s;
+}
+
+input[type=submit]:hover{
+	background-color: #fff;
+	color: #ee3434;
+	border: 1px solid #ee3434;
 }
 
 div.commentLabel{
