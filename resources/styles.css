@@ -22,20 +22,20 @@ body {
 }
 
 a:link {
-	color: #373737;
-	text-decoration: underline;
+	color: #EE3434;
+	text-decoration: none;
 }
 a:visited {
-	text-decoration: underline;
-	color: #373737;
-}
-a:hover {
 	text-decoration: none;
 	color: #EE3434;
 }
-a:active {
+a:hover {
 	text-decoration: underline;
-	color: #373737;
+	color: #EE3434;
+}
+a:active {
+	text-decoration: none;
+	color: #EE3434;
 }
 
 div.headerContainer{
@@ -109,6 +109,7 @@ div.postsBody{
 	margin-top: 20px;
 	padding-bottom: 30px;
 	overflow: hidden;
+	border: solid 1px #ebebeb;
 }
 
 div.postContainer{
@@ -148,6 +149,14 @@ div.postBody{
 	width: 100%;
 }
 
+div.postInfo{
+	margin-left: 24px;
+	margin-top: 5px;
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #5F5F5F;
+}
+
 div.postBodyContent{
 	font-family: Titillium Web;
 	color: #373737;
@@ -155,6 +164,7 @@ div.postBodyContent{
 	margin-left: 24px;
 	margin-right: 24px;
 	margin-bottom: 10px;
+	margin-top: 15px;
 	overflow: hidden;
 }
 
@@ -199,38 +209,25 @@ div.formatEmo{
 
 div.formatBoldHover{
 	background-image: url(../images/format_bold_hover.jpg);
+}
+
+div.formatInnerHover{
 	opacity: 0;
 	width: 32px;
 	height: 32px;
 	transition: opacity 0.5s;
 }
 
-div.formatBoldHover:hover{
+div.formatInnerHover:hover{
 	opacity: 1;
 }
 
 div.formatItalicHover{
 	background-image: url(../images/format_italic_hover.jpg);
-	opacity: 0;
-	width: 32px;
-	height: 32px;
-	transition: opacity 0.5s;
-}
-
-div.formatItalicHover:hover{
-	opacity: 1;
 }
 
 div.formatEmoHover{
 	background-image: url(../images/format_emo_hover.jpg);
-	opacity: 0;
-	width: 32px;
-	height: 32px;
-	transition: opacity 0.5s;
-}
-
-div.formatEmoHover:hover{
-	opacity: 1;
 }
 
 div.emoBox{
@@ -309,6 +306,65 @@ div.footerLeftIcon{
 	height: 50px;
 	float: left;
 	margin: 7px;
+}
+
+div.footerLeftIconInner{
+	width: 50px;
+	height: 50px;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+div.footerLeftIconInner:hover{
+	opacity: 1;
+}
+
+div.footerLeftIconFacebook{
+	background-image: url(../images/social_facebook.jpg);
+}
+
+div.footerLeftIconTwitter{
+	background-image: url(../images/social_twitter.jpg);
+}
+
+div.footerLeftIconLinkedin{
+	background-image: url(../images/social_linkedin.jpg);
+}
+
+div.footerLeftIconGithub{
+	background-image: url(../images/social_github.jpg);
+}
+
+div.footerLeftIconScirra{
+	background-image: url(../images/social_scirra.jpg);
+}
+
+div.footerLeftIconNewgrounds{
+	background-image: url(../images/social_newgrounds.jpg);
+}
+
+div.footerLeftIconFacebookHover{
+	background-image: url(../images/social_facebook_hover.jpg);
+}
+
+div.footerLeftIconTwitterHover{
+	background-image: url(../images/social_twitter_hover.jpg);
+}
+
+div.footerLeftIconLinkedinHover{
+	background-image: url(../images/social_linkedin_hover.jpg);
+}
+
+div.footerLeftIconGithubHover{
+	background-image: url(../images/social_github_hover.jpg);
+}
+
+div.footerLeftIconScirraHover{
+	background-image: url(../images/social_scirra_hover.jpg);
+}
+
+div.footerLeftIconNewgroundsHover{
+	background-image: url(../images/social_newgrounds_hover.jpg);
 }
 
 #wrapper{

@@ -74,40 +74,6 @@ function scrollTabsPlacement()
 		document.getElementById("headerFollowup").style.visibility = "hidden";
 }
 
-function iconSelection(iconID, makeSelection)
-{
-	var iconPath = "images/social_";
-	
-	switch(iconID)
-	{
-		case 'icon1':
-			iconPath = iconPath + "facebook";
-			break;
-		case 'icon2':
-			iconPath = iconPath + "twitter";
-			break;
-		case 'icon3':
-			iconPath = iconPath + "linkedin";
-			break;
-		case 'icon4':
-			iconPath = iconPath + "github";
-			break;
-		case 'icon5':
-			iconPath = iconPath + "scirra";
-			break;
-		case 'icon6':
-			iconPath = iconPath + "newgrounds";
-			break;
-	}
-	
-	if (makeSelection)
-		iconPath = iconPath + "_hover.jpg";
-	else
-		iconPath = iconPath + ".jpg";
-		
-	document.getElementById(iconID).src = iconPath;
-}
-
 function showLettersLeft(textID, lableID)
 {
 	var textArea = document.getElementById(textID);
@@ -173,12 +139,13 @@ function displayComment(cmName, cmDate, cmContent)
 	 + finalComment + '</div></div><div class="commentSeparator"></div>';
 }
 
-function displayPost(title, content)
+function displayPost(title, date, author, content)
 {
 	var element = document.getElementById("postsBody");
 
 	element.innerHTML += '<div class="postContainer"><div class="postHeader"><div class="postHeaderTitle">'
-	 + title + '</div><div class="postHeaderSeparator"></div></div><div class="postBody"><div class="postBodyContent">'
+	 + title + '</div><div class="postHeaderSeparator"></div></div><div class="postInfo">By '
+	 + author + ', on ' + date +'</div><div class="postBody"><div class="postBodyContent">'
 	 + content.slice(1, content.length - 1) + '</div></div></div>';
 }
 

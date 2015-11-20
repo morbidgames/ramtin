@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>Ramtin's Online Resume</title>
+        <title>ramtin</title>
         <link href="resources/styles.css" rel="stylesheet" type="text/css">
 		<link href='https://fonts.googleapis.com/css?family=Titillium+Web' rel='stylesheet' type='text/css'>
         <link rel="apple-touch-icon" sizes="57x57" href="/images/apple-touch-icon-57x57.png">
@@ -35,7 +35,7 @@
                 <center>
                     <div class="headerTabs">
                         <div class="tab" onclick="location.href='index.php'">Home</div>
-                        <div class="tab">Resume</div>
+                        <div class="tab">Codes</div>
                         <div class="tab">Projects</div>
                         <div class="tab">Designs</div>
                         <div class="tab">About</div>
@@ -49,7 +49,7 @@
                 <center>
                     <div class="headerTabs">
                         <div class="tab" onclick="location.href='index.php'">Home</div>
-                        <div class="tab">Resume</div>
+                        <div class="tab">Codes</div>
                         <div class="tab">Projects</div>
                         <div class="tab">Designs</div>
                         <div class="tab">About</div>
@@ -65,22 +65,22 @@
                         //Connect to Database
                         $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
 
+                        $postId = $_GET['id'];
+
                         //Read each row from posts table
-                        foreach($db->query('SELECT * FROM posts') as $row)
+                        foreach($db->query("SELECT * FROM posts WHERE id = $postId") as $row)
                         {
                             $qtitle = $row['title'];
                             $qcontent = $row['content'];
-                            $qid = $row['id'];
-                            
-                            if($qid != $_GET['id'])
-                                continue;
+                            $qdate = $row['date'];
+                            $qauthor = $row['author'];
 
                             //Encode & escape special characters in HTML content read from Database
                             $qcontent = json_encode(utf8_encode($qcontent));
                             $qcontent = str_replace("'", "\'", $qcontent);
 
                             //Pass to Javascript function to display data in form of post
-                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qcontent');</script>";
+                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qdate', '$qauthor', '$qcontent');</script>";
 
                             break;
                         }
@@ -112,13 +112,13 @@
                                 </div>
                                 <div class="commentFormRow">
                                     <div class="commentFormattingBox formatBold" onmousedown="insertFormatTag('bold', 'comments');" title="Alt+A">
-                                        <div class="formatBoldHover"></div>
+                                        <div class="formatInnerHover formatBoldHover"></div>
                                     </div>
                                     <div class="commentFormattingBox formatItalic" onmousedown="insertFormatTag('italic', 'comments');" title="Alt+I">
-                                        <div class="formatItalicHover"></div>
+                                        <div class="formatInnerHover formatItalicHover"></div>
                                     </div>
                                     <div class="commentFormattingBox formatEmo" onclick="switchEmoBox();">
-                                        <div class="formatEmoHover"></div>
+                                        <div class="formatInnerHover formatEmoHover"></div>
                                     </div>
                                 </div>
                                     <div class="emoBox" id="emoBox">
@@ -192,23 +192,35 @@
             </div>
             <div class="footer">
             	<div class="footerLeft">
-                	<div class="footerLeftIcon">
-                    	<a href="https://facebook.com/ramtin.soltani" target="_blank"><img src="images/social_facebook.jpg" border="0" width="50" height="50" id="icon1" title="Facebook" onMouseOver="iconSelection('icon1', true);" onMouseOut="iconSelection('icon1', false);"/></a>
+                	<div class="footerLeftIcon footerLeftIconFacebook">
+                    	<a href="https://facebook.com/ramtin.soltani" target="_blank">
+                            <div class="footerLeftIconInner footerLeftIconFacebookHover"></div>
+                        </a>
                     </div>
-                    <div class="footerLeftIcon">
-                    	<a href="https://twitter.com/morbid_games" target="_blank"><img src="images/social_twitter.jpg" border="0" width="50" height="50" id="icon2" title="Twitter" onMouseOver="iconSelection('icon2', true);" onMouseOut="iconSelection('icon2', false);"/></a>
+                    <div class="footerLeftIcon footerLeftIconTwitter">
+                    	<a href="https://twitter.com/morbid_games" target="_blank">
+                            <div class="footerLeftIconInner footerLeftIconTwitterHover"></div>
+                        </a>
                     </div>
-                    <div class="footerLeftIcon">
-                    	<a href="http://www.linkedin.com/in/ramtinsoltani" target="_blank"><img src="images/social_linkedin.jpg" border="0" width="50" height="50" id="icon3" title="LinkedIn" onMouseOver="iconSelection('icon3', true);" onMouseOut="iconSelection('icon3', false);"/></a>
+                    <div class="footerLeftIcon footerLeftIconLinkedin">
+                    	<a href="http://www.linkedin.com/in/ramtinsoltani" target="_blank">
+                            <div class="footerLeftIconInner footerLeftIconLinkedinHover"></div>
+                        </a>
                     </div>
-                    <div class="footerLeftIcon">
-                    	<a href="https://github.com/morbidgames" target="_blank"><img src="images/social_github.jpg" border="0" width="50" height="50" id="icon4" title="Github" onMouseOver="iconSelection('icon4', true);" onMouseOut="iconSelection('icon4', false);"/></a>
+                    <div class="footerLeftIcon footerLeftIconGithub">
+                    	<a href="https://github.com/morbidgames" target="_blank">
+                            <div class="footerLeftIconInner footerLeftIconGithubHover"></div>
+                        </a>
                     </div>
-                    <div class="footerLeftIcon">
-                    	<a href="https://www.scirra.com/users/ramtinsoltani" target="_blank"><img src="images/social_scirra.jpg" border="0" width="50" height="50" id="icon5" title="Scirra" onMouseOver="iconSelection('icon5', true);" onMouseOut="iconSelection('icon5', false);"/></a>
+                    <div class="footerLeftIcon footerLeftIconScirra">
+                    	<a href="https://www.scirra.com/users/ramtinsoltani" target="_blank">
+                            <div class="footerLeftIconInner footerLeftIconScirraHover"></div>
+                        </a>
                     </div>
-                    <div class="footerLeftIcon">
-                    	<a href="http://morbidgames.newgrounds.com/" target="_blank"><img src="images/social_newgrounds.jpg" border="0" width="50" height="50" id="icon6" title="Newgrounds" onMouseOver="iconSelection('icon6', true);" onMouseOut="iconSelection('icon6', false);"/></a>
+                    <div class="footerLeftIcon footerLeftIconNewgrounds">
+                    	<a href="http://morbidgames.newgrounds.com/" target="_blank">
+                            <div class="footerLeftIconInner footerLeftIconNewgroundsHover"></div>
+                        </a>
                     </div>
                 </div>
                 <div class="footerCenter">

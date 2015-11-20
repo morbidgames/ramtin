@@ -4,6 +4,7 @@ Much has to be done before the website would be ready to go online, including:
 
 - [x] Working out an SQL/PHP database system to show the contents of the website.
 - [x] Adding emoticons and text formatting in Comments.
+- [ ] Adding tags and search.
 - [ ] Finishing the design of website.
 - [ ] Making every page work with the system.
 - [ ] Finishing the website.
