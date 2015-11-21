@@ -33,7 +33,7 @@
             <div class="headerFollowupTabs" id="headerFollowup">
                 <center>
                     <div class="headerTabs">
-                        <div class="tabSelected">Home</div>
+                        <div class="tab" onclick="location.href='index.php'">Home</div>
                         <div class="tab">Codes</div>
                         <div class="tab">Projects</div>
                         <div class="tab">Designs</div>
@@ -57,7 +57,7 @@
                 </div>
                 <center>
                     <div class="headerTabs">
-                        <div class="tabSelected" id="tab1">Home</div>
+                        <div class="tab" onclick="location.href='index.php'">Home</div>
                         <div class="tab">Codes</div>
                         <div class="tab">Projects</div>
                         <div class="tab">Designs</div>
@@ -69,13 +69,18 @@
             </div>
             <div id="content">
                 <div class="postsBody" id="postsBody">
+                    <div class="filterTitle">
+                        Filtering by tag: <?php echo $_GET['tag']; ?>
+                    </div>
                     <!--post-->
                     <?php
                         //Connect to Database
                         $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
 
+                        $tagname = "%" . $_GET['tag'] . "%";
+
                         //Read each row from posts table
-                        foreach($db->query('SELECT * FROM posts WHERE page_id LIKE "%home%"') as $row)
+                        foreach($db->query("SELECT * FROM posts WHERE tags LIKE '$tagname'") as $row)
                         {
                             $qtitle = $row['title'];
                             $qcontent = $row['peak_content'];

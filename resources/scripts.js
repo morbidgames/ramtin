@@ -139,14 +139,37 @@ function displayComment(cmName, cmDate, cmContent)
 	 + finalComment + '</div></div><div class="commentSeparator"></div>';
 }
 
-function displayPost(title, date, author, content)
+function displayPost(title, date, author, content, tags, peak, id)
 {
-	var element = document.getElementById("postsBody");
+	if (peak === undefined) peak = false;
 
-	element.innerHTML += '<div class="postContainer"><div class="postHeader"><div class="postHeaderTitle">'
+	if (id === undefined) id = 0;
+
+	if (tags === undefined)
+		tags = [];
+	else
+	{
+		tags = JSON.parse(tags);
+
+		if (tags[0] == "") tags.splice(0, 1);
+	}
+
+	console.log(tags);
+
+	var element = document.getElementById("postsBody");
+	var finalPost = "";
+
+	finalPost = '<div class="postContainer"><div class="postHeader"><div class="postHeaderTitle">'
 	 + title + '</div><div class="postHeaderSeparator"></div></div><div class="postInfo">By '
 	 + author + ', on ' + date +'</div><div class="postBody"><div class="postBodyContent">'
-	 + content.slice(1, content.length - 1) + '</div></div></div>';
+	 + content.slice(1, content.length - 1) + (peak?(' <a href="/post.php?id=' + id + '">Read more...</a>'):'') + (tags.length > 0?'<div style="width: 100%;">':'');
+
+	for (var i = tags.length - 1; i >= 0; i--)
+		finalPost += '<a href="tag.php?tag=' + tags[i] + '"><div class="tag">' + tags[i] + '</div></a>';
+
+	finalPost += (tags.length > 0?'</div>':'') + '</div></div></div>';
+
+	element.innerHTML += finalPost;
 }
 
 function getEmo(emoText)

@@ -40,12 +40,71 @@ a:active {
 
 div.headerContainer{
 	background-color: #fff;
+	width: 100%;
+}
+
+div.header{
+	height: 187px;
 	background-image: url(../images/logo.jpg);
 	background-repeat: no-repeat;
 	background-position: 104px 100px;
-	height: 48px;
-	padding-top: 187px;
-	width: 100%;
+}
+
+div.searchBox{
+	height: 34px;
+	width: 248px;
+	background-color: red;
+	float: right;
+	margin-top: 120px;
+	margin-right: 72px;
+}
+
+div.searchTextWrapper{
+	width: 214px;
+	height: 32px;
+	float: left;
+}
+
+input.searchText{
+	width: 214px;
+	height: 30px;
+	background-color: #fff;
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+	outline: none;
+	border: 1px solid #dcdcdc;
+	padding-left: 5px;
+	padding-right: 37px;
+	transition: border 0.5s;
+}
+
+input.searchText:focus{
+	border: 1px solid #ee3434;
+}
+
+div.searchButton{
+	width: 32px;
+	height: 34px;
+	background-image: url(../images/search_button.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	margin-right: -10px;
+	float: right;
+}
+
+div.searchButtonHover{
+	width: 32px;
+	height: 34px;
+	background-image: url(../images/search_button_hover.jpg);
+	background-position: center;
+	background-repeat: no-repeat;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+div.searchButtonHover:hover{
+	opacity: 1;
 }
 
 div.headerTabs{
@@ -99,6 +158,20 @@ div.tabSelected{
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
+}
+
+div.filterTitle{
+	background-color: #fff;
+	font-family: Titillium Web;
+	font-size: 24px;
+	color: #ee3434;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	width: 100%;
+	display: block;
+	vertical-align: middle;
+	text-align: center;
+	font-weight: bold;
 }
 
 div.postsBody{
@@ -166,6 +239,30 @@ div.postBodyContent{
 	margin-bottom: 10px;
 	margin-top: 15px;
 	overflow: hidden;
+}
+
+div.tag{
+	font-size: 14px;
+	color: #fff;
+	font-family: Titillium Web;
+	background-color: #ee3434;
+	height: 22px;
+	padding-left: 10px;
+	padding-right: 10px;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	cursor: default;
+	border-radius: 11px;
+	border:1px solid #ee3434;
+	transition: color 0.5s, background-color 0.5s;
+	float: right;
+	margin-right: 5px;
+}
+
+div.tag:hover{
+	background-color: #fff;
+	color: #ee3434;
 }
 
 img.globalImageStyle{
@@ -376,7 +473,7 @@ div.footerLeftIconNewgroundsHover{
 	padding-bottom: 203px;
 }
 
-input[type=text]{
+input.formText{
 	height: 20px;
 	width: 100%;
 	background-color: #fff;

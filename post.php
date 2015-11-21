@@ -46,6 +46,16 @@
             </div>
             <!--/Followup Tabs-->
             <div class="headerContainer">
+                <div class="header">
+                    <div class="searchBox">
+                        <div class="searchTextWrapper">
+                            <input class="searchText" type="text" placeholder="Search..." name="search" />
+                        </div>
+                        <div class="searchButton">
+                            <div class="searchButtonHover"></div>
+                        </div>
+                    </div>
+                </div>
                 <center>
                     <div class="headerTabs">
                         <div class="tab" onclick="location.href='index.php'">Home</div>
@@ -74,13 +84,15 @@
                             $qcontent = $row['content'];
                             $qdate = $row['date'];
                             $qauthor = $row['author'];
+                            $qalltags = $row['tags'];
+                            $tags = json_encode(explode(",", $qalltags));
 
                             //Encode & escape special characters in HTML content read from Database
                             $qcontent = json_encode(utf8_encode($qcontent));
                             $qcontent = str_replace("'", "\'", $qcontent);
 
                             //Pass to Javascript function to display data in form of post
-                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qdate', '$qauthor', '$qcontent');</script>";
+                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qdate', '$qauthor', '$qcontent', '$tags');</script>";
 
                             break;
                         }
@@ -105,10 +117,10 @@
                         <div style="float: left; width: 445px;">
                             <form method="post">
                                 <div class="commentFormRow">
-                                    <input type="text" name="name">
+                                    <input class="formText" type="text" name="name">
                                 </div>
                                 <div class="commentFormRow">
-                                    <input type="text" placeholder="example@email.com" name="email">
+                                    <input class="formText" type="text" placeholder="example@email.com" name="email">
                                 </div>
                                 <div class="commentFormRow">
                                     <div class="commentFormattingBox formatBold" onmousedown="insertFormatTag('bold', 'comments');" title="Alt+A">
