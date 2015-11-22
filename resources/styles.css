@@ -258,6 +258,12 @@ div.tag{
 	transition: color 0.5s, background-color 0.5s;
 	float: right;
 	margin-right: 5px;
+	margin-top: 5px;
+}
+
+div.tagsWrapper{
+	width: 100%;
+	margin-top: 10px;
 }
 
 div.tag:hover{
@@ -489,23 +495,20 @@ input[type=submit]{
 	width: 130px;
 	height: 45px;
 	background-color: #ee3434;
+	border: 1px solid #ee3434;
 	display: block;
 	vertical-align: middle;
 	text-align: center;
 	font-family: Titillium Web;
 	color: #fff;
 	font-size: 18px;
-	border: 0;
 	outline: 0;
-	transition: background-color 0.5s;
-	transition: border 0.5s;
-	transition: color 0.5s;
+	transition: background-color 0.5s, color 0.5s;
 }
 
 input[type=submit]:hover{
 	background-color: #fff;
 	color: #ee3434;
-	border: 1px solid #ee3434;
 }
 
 div.commentLabel{

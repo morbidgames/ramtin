@@ -48,10 +48,10 @@
                 <div class="header">
                     <div class="searchBox">
                         <div class="searchTextWrapper">
-                            <input class="searchText" type="text" placeholder="Search..." name="search" />
+                            <input id="searchText" class="searchText" type="text" placeholder="Search..." name="search" onkeypress="keyNavigateToSearch(event, 'searchText');" />
                         </div>
                         <div class="searchButton">
-                            <div class="searchButtonHover"></div>
+                            <div class="searchButtonHover" onclick="navigateToSearch('searchText');"></div>
                         </div>
                     </div>
                 </div>

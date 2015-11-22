@@ -3,6 +3,20 @@
 window.onscroll = function() {scrollTabsPlacement()};
 document.onmousewheel = function() {scrollTabsPlacement()};
 
+function keyNavigateToSearch(e, elementId)
+{
+	if(e.keyCode == 13) navigateToSearch(elementId);
+}
+
+function navigateToSearch(elementId)
+{
+	element = document.getElementById(elementId);
+
+	if(element.value == "") return;
+	
+	location.href = 'search.php?key=' + element.value.trim().replace(/\s+/g, '+') + '&sort=best&page=1';
+}
+
 function insertFormatTag(formatType, commentBox)
 {
 	var cmBox = document.getElementById(commentBox);
@@ -162,7 +176,7 @@ function displayPost(title, date, author, content, tags, peak, id)
 	finalPost = '<div class="postContainer"><div class="postHeader"><div class="postHeaderTitle">'
 	 + title + '</div><div class="postHeaderSeparator"></div></div><div class="postInfo">By '
 	 + author + ', on ' + date +'</div><div class="postBody"><div class="postBodyContent">'
-	 + content.slice(1, content.length - 1) + (peak?(' <a href="/post.php?id=' + id + '">Read more...</a>'):'') + (tags.length > 0?'<div style="width: 100%;">':'');
+	 + content.slice(1, content.length - 1) + (peak?(' <a href="/post.php?id=' + id + '">Read more...</a>'):'') + (tags.length > 0?'<div class="tagsWrapper">':'');
 
 	for (var i = tags.length - 1; i >= 0; i--)
 		finalPost += '<a href="tag.php?tag=' + tags[i] + '"><div class="tag">' + tags[i] + '</div></a>';

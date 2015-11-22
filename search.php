@@ -26,6 +26,7 @@
         <meta name="msapplication-config" content="/images/browserconfig.xml">
         <meta name="theme-color" content="#ea3433">
         <script type="text/javascript" src="resources/scripts.js"></script>
+        <?php require('resources/framework.php'); ?>
     </head>
     <body>
         <div id="wrapper">
@@ -33,7 +34,7 @@
             <div class="headerFollowupTabs" id="headerFollowup">
                 <center>
                     <div class="headerTabs">
-                        <div class="tabSelected">Home</div>
+                        <div class="tab"  onclick="location.href='index.php'">Home</div>
                         <div class="tab">Codes</div>
                         <div class="tab">Projects</div>
                         <div class="tab">Designs</div>
@@ -57,7 +58,7 @@
                 </div>
                 <center>
                     <div class="headerTabs">
-                        <div class="tabSelected">Home</div>
+                        <div class="tab" onclick="location.href='index.php'">Home</div>
                         <div class="tab">Codes</div>
                         <div class="tab">Projects</div>
                         <div class="tab">Designs</div>
@@ -69,31 +70,11 @@
             </div>
             <div id="content">
                 <div class="postsBody" id="postsBody">
-                    <!--post-->
                     <?php
-                        //Connect to Database
-                        $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
-
-                        //Read each row from posts table
-                        foreach($db->query('SELECT * FROM posts WHERE page_id LIKE "%home%"') as $row)
-                        {
-                            $qtitle = $row['title'];
-                            $qcontent = $row['peak_content'];
-                            $qdate = $row['date'];
-                            $qauthor = $row['author'];
-                            $qid = $row['id'];
-                            $qalltags = $row['tags'];
-                            $tags = json_encode(explode(",", $qalltags));
-
-                            //Encode & escape special characters in HTML content read from Database
-                            $qcontent = json_encode(utf8_encode($qcontent));
-                            $qcontent = str_replace("'", "\'", $qcontent);
-
-                            //Pass to Javascript function to display data in form of post
-                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qdate', '$qauthor', '$qcontent', '$tags', true, '$qid');</script>";
-                        }
+                        $matches = Ramtin::search($_GET['key'], $_GET['sort'], $_GET['page']);
+                        for($i = 0; $i < count($matches); $i++)
+                            echo "ID: " . $matches[$i]->getId() . ", matchPoints: " . $matches[$i]->getMatchPoint() . "<br/>";
                     ?>
-                    <!--/post-->
                 </div>
             </div>
             <div class="footer">

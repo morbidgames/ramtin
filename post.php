@@ -49,10 +49,10 @@
                 <div class="header">
                     <div class="searchBox">
                         <div class="searchTextWrapper">
-                            <input class="searchText" type="text" placeholder="Search..." name="search" />
+                            <input id="searchText" class="searchText" type="text" placeholder="Search..." name="search" onkeypress="keyNavigateToSearch(event, 'searchText');" />
                         </div>
                         <div class="searchButton">
-                            <div class="searchButtonHover"></div>
+                            <div class="searchButtonHover" onclick="navigateToSearch('searchText');"></div>
                         </div>
                     </div>
                 </div>
@@ -192,9 +192,9 @@
                             <div class="notificationHeader">By clicking submit you agree to:</div>
                             <div class="notificationContent">
                                 <ol>
-                                    <li type="circle">Not leave rude comments!</li>
-                                    <li type="circle">Not ridicule other commenters!</li>
-                                    <li type="circle">Not use comments to advertise your products, websites, or services.</li>
+                                    <li type="circle">Not leaving rude comments!</li>
+                                    <li type="circle">Not ridiculing other commenters!</li>
+                                    <li type="circle">Not using comments to advertise your products, websites, or services.</li>
                                 </ol>
                             </div>
                         </div>
