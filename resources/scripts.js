@@ -12,9 +12,9 @@ function navigateToSearch(elementId)
 {
 	element = document.getElementById(elementId);
 
-	if(element.value == "") return;
+	if(element.value.trim().replace(/\s+/g, '') == "") return;
 	
-	location.href = 'search.php?key=' + element.value.trim().replace(/\s+/g, '+') + '&sort=best&page=1';
+	location.href = 'search.php?key=' + encodeURIComponent(element.value.trim().replace(/\s+/g, ' ')).replace(/%20/g, '+') + '&sort=best&page=1';
 }
 
 function insertFormatTag(formatType, commentBox)
@@ -168,8 +168,6 @@ function displayPost(title, date, author, content, tags, peak, id)
 		if (tags[0] == "") tags.splice(0, 1);
 	}
 
-	console.log(tags);
-
 	var element = document.getElementById("postsBody");
 	var finalPost = "";
 
@@ -179,7 +177,7 @@ function displayPost(title, date, author, content, tags, peak, id)
 	 + content.slice(1, content.length - 1) + (peak?(' <a href="/post.php?id=' + id + '">Read more...</a>'):'') + (tags.length > 0?'<div class="tagsWrapper">':'');
 
 	for (var i = tags.length - 1; i >= 0; i--)
-		finalPost += '<a href="tag.php?tag=' + tags[i] + '"><div class="tag">' + tags[i] + '</div></a>';
+		finalPost += '<a href="tag.php?tag=' + tags[i] + '&sort=recent&page=1"><div class="tag">' + tags[i] + '</div></a>';
 
 	finalPost += (tags.length > 0?'</div>':'') + '</div></div></div>';
 
@@ -329,9 +327,6 @@ function placeEmos(comment)
 		prevChar = 0;
 		nextChar = 0;
 		foundLength = 0;
-		leftEndFlag = false;
-		rightEndFlag = false;
-		tagFlag = false;
 
 		while(foundIndex > -1)
 		{
@@ -349,18 +344,25 @@ function placeEmos(comment)
 
 			if(emos[i].substr(0, 1) == "[")
 				tagFlag = true;
+			else
+				tagFlag = false;
 
 			if(prevChar < 0 || comment.substr(prevChar, 1) == " " || ((foundIndex > 4) && (comment.substr(prevChar - 4, 5) == "<br/>")))
 				leftEndFlag = true;
+			else
+				leftEndFlag = false;
 
 			if(nextChar == -1 || comment.substr(nextChar, 1) == " " || ((nextChar + 4 <= totalLength) && (comment.substr(nextChar, 5) == "<br/>")))
 				rightEndFlag = true;
+			else
+				rightEndFlag = false;
 			
 			if(tagFlag || (leftEndFlag && rightEndFlag))
 			{
 				var emoCode = getEmo(emos[i]);
-				comment = comment.replace(emos[i], emoCode);
-				lastIndex = foundIndex + (emoCode.length - foundLength) + 1;
+				
+				comment = comment.substr(0, foundIndex) + emoCode + comment.substr(nextChar, comment.length - nextChar);
+				lastIndex = foundIndex + emoCode.length;
 				totalLength = comment.length;
 				leftEndFlag = false;
 				rightEndFlag = false;

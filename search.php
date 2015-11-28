@@ -72,8 +72,13 @@
                 <div class="postsBody" id="postsBody">
                     <?php
                         $matches = Ramtin::search($_GET['key'], $_GET['sort'], $_GET['page']);
-                        for($i = 0; $i < count($matches); $i++)
-                            echo "ID: " . $matches[$i]->getId() . ", matchPoints: " . $matches[$i]->getMatchPoint() . "<br/>";
+                        echo Ramtin::showSearchTitleGUI((count($matches) > 0),$_GET['key']);
+                        if($matches != FALSE && count($matches) > 0)
+                        {
+                            echo Ramtin::showSearchSortGUI($_GET['key'], $_GET['sort'], $_GET['page']);
+                            echo Ramtin::showSearchGUI($matches);
+                            echo Ramtin::showSearchPageNavigationGUI($_GET['page'], $_GET['key'], $_GET['sort']);
+                        }
                     ?>
                 </div>
             </div>

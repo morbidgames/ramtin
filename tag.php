@@ -26,6 +26,7 @@
         <meta name="msapplication-config" content="/images/browserconfig.xml">
         <meta name="theme-color" content="#ea3433">
         <script type="text/javascript" src="resources/scripts.js"></script>
+        <?php require('resources/framework.php'); ?>
     </head>
     <body>
         <div id="wrapper">
@@ -69,36 +70,9 @@
             </div>
             <div id="content">
                 <div class="postsBody" id="postsBody">
-                    <div class="filterTitle">
-                        Filtering by tag: <?php echo $_GET['tag']; ?>
-                    </div>
-                    <!--post-->
                     <?php
-                        //Connect to Database
-                        $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
-
-                        $tagname = "%" . $_GET['tag'] . "%";
-
-                        //Read each row from posts table
-                        foreach($db->query("SELECT * FROM posts WHERE tags LIKE '$tagname'") as $row)
-                        {
-                            $qtitle = $row['title'];
-                            $qcontent = $row['peak_content'];
-                            $qdate = $row['date'];
-                            $qauthor = $row['author'];
-                            $qid = $row['id'];
-                            $qalltags = $row['tags'];
-                            $tags = json_encode(explode(",", $qalltags));
-
-                            //Encode & escape special characters in HTML content read from Database
-                            $qcontent = json_encode(utf8_encode($qcontent));
-                            $qcontent = str_replace("'", "\'", $qcontent);
-
-                            //Pass to Javascript function to display data in form of post
-                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qdate', '$qauthor', '$qcontent', '$tags', true, '$qid');</script>";
-                        }
+                        echo Ramtin::showTags($_GET['tag'], $_GET['sort'], $_GET['page']);
                     ?>
-                    <!--/post-->
                 </div>
             </div>
             <div class="footer">

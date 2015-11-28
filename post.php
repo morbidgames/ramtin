@@ -27,6 +27,7 @@
         <meta name="theme-color" content="#ea3433">
         <script type="text/javascript" src="resources/scripts.js"></script>
         <script src='https://www.google.com/recaptcha/api.js'></script>
+        <?php require('resources/framework.php'); ?>
     </head>
     <body>
         <div id="wrapper">
@@ -71,32 +72,7 @@
             <div id="content">
                 <div class="postsBody" id="postsBody">
                     <!--post-->
-                    <?php
-                        //Connect to Database
-                        $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
-
-                        $postId = $_GET['id'];
-
-                        //Read each row from posts table
-                        foreach($db->query("SELECT * FROM posts WHERE id = $postId") as $row)
-                        {
-                            $qtitle = $row['title'];
-                            $qcontent = $row['content'];
-                            $qdate = $row['date'];
-                            $qauthor = $row['author'];
-                            $qalltags = $row['tags'];
-                            $tags = json_encode(explode(",", $qalltags));
-
-                            //Encode & escape special characters in HTML content read from Database
-                            $qcontent = json_encode(utf8_encode($qcontent));
-                            $qcontent = str_replace("'", "\'", $qcontent);
-
-                            //Pass to Javascript function to display data in form of post
-                            echo "<script type='text/javascript'>displayPost('$qtitle', '$qdate', '$qauthor', '$qcontent', '$tags');</script>";
-
-                            break;
-                        }
-                    ?>
+                    <?php echo Ramtin::readPostByID($_GET['id']); ?>
                     <!--/post-->
 
                     <!--Comments-->
@@ -117,10 +93,10 @@
                         <div style="float: left; width: 445px;">
                             <form method="post">
                                 <div class="commentFormRow">
-                                    <input class="formText" type="text" name="name">
+                                    <input class="formText" type="text" name="name" maxlength="50">
                                 </div>
                                 <div class="commentFormRow">
-                                    <input class="formText" type="text" placeholder="example@email.com" name="email">
+                                    <input class="formText" type="text" placeholder="example@email.com" name="email" maxlength="50">
                                 </div>
                                 <div class="commentFormRow">
                                     <div class="commentFormattingBox formatBold" onmousedown="insertFormatTag('bold', 'comments');" title="Alt+A">
@@ -241,74 +217,19 @@
                 <div class="footerRight"></div>
             </div>
         </div>
-    </body>
-    <?php
-        if(isset($_POST['add']))
-        {
-            $name = $_POST['name'];
-            $email = $_POST['email'];
-            $comment = $_POST['comment'];
-            $timezone = new DateTime('', new DateTimeZone('America/Los_Angeles'));
-            $date = $timezone->format('F jS, Y (h:i A)');
-            $captcha = $_POST['g-recaptcha-response'];
-            
-            if(!$captcha)
-                echo '<script type="text/javascript">displayError(2);</script>';
-            else
+        <?php
+            if(isset($_POST['add']))
             {
-                $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=6LfzshATAAAAACEIkKtfsZFNlwFM387rrmqA954c&response=".$captcha."&remoteip=".$_SERVER['REMOTE_ADDR']);
-                $responseData = json_decode($response);
-
-                if (!$responseData->success)
-                    echo '<script type="text/javascript">displayError(3);</script>';
-                else
-                {
-                    $name = trim($name);
-                    $name = strip_tags($name);
-                    $email = trim($email);
-                    $comment = trim($comment);
-                    $comment = strip_tags($comment);
-                    
-                    if ($name == "" || $email == "" || $comment == "")
-                        echo '<script type="text/javascript">displayError(0);</script>';
-                    elseif (!filter_var($email, FILTER_VALIDATE_EMAIL))
-                        echo '<script type="text/javascript">displayError(1);</script>';
-                    elseif (preg_replace('/(\v+|\r\n+| +|\[bold\]+|\[\/bold\]+|\[italic\]+|\[\/italic\]+)/','', $comment) == "")
-                        echo '<script type="text/javascript">displayError(4);</script>';
-                    else
-                    {
-                        //Connect to Database
-                        $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
-                        
-                        //Insert into 'comments'
-                        $ins = $db->prepare("INSERT INTO comments(id,name,email,date,comment,post_id) VALUES(:field1,:field2,:field3,:field4,:field5,:field6)");
-                        $ins->execute(array(':field1' => '', ':field2' => $name, ':field3' => $email, ':field4' => $date, ':field5' => $comment, ':field6' => $_GET['id']));
-                    }
-                }
+                $name = $_POST['name'];
+                $email = $_POST['email'];
+                $comment = $_POST['comment'];
+                $timezone = new DateTime('', new DateTimeZone('America/Los_Angeles'));
+                $date = $timezone->format('Y-m-d H:i:s');
+                $captcha = $_POST['g-recaptcha-response'];
+                
+                echo Ramtin::postComment($captcha, $name, $email, $comment, $date, $_GET['id']);
             }
-        }
-    ?>
-    <?php
-        //Connect to Database
-        $db = new PDO('mysql:host=localhost;dbname=ramtin_data;charset=utf8', 'root', '');
-
-        //Read each row from posts table
-        foreach($db->query('SELECT * FROM comments') as $row)
-        {
-            $qname = $row['name'];
-            $qcomment = $row['comment'];
-            $qdate = $row['date'];
-            $qpost_id = $row['post_id'];
-
-            if($qpost_id != $_GET['id'])
-                continue;
-
-            //Encode & escape special characters in comment read from Database
-            $qcomment = preg_replace('/\v+|\\\[rn]/','<br/>', $qcomment);
-            $qcomment = json_encode(utf8_encode($qcomment));
-            $qcomment = str_replace("'", "\'", $qcomment);
-
-            echo "<script type='text/javascript'>displayComment('$qname', '$qdate', '$qcomment');</script>";
-        }
-    ?>
+        ?>
+        <?php echo Ramtin::readComments(); ?>
+    </body>
 </html>

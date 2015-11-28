@@ -38,6 +38,26 @@ a:active {
 	color: #EE3434;
 }
 
+div.noSelection{
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+}
+
+div.defaultText{
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+}
+
+div.defaultCursor{
+	cursor: default;
+}
+
+div.pointCursor{
+	cursor: pointer;
+}
+
 div.headerContainer{
 	background-color: #fff;
 	width: 100%;
@@ -91,6 +111,7 @@ div.searchButton{
 	background-repeat: no-repeat;
 	margin-right: -10px;
 	float: right;
+	cursor: pointer;
 }
 
 div.searchButtonHover{
@@ -105,6 +126,119 @@ div.searchButtonHover{
 
 div.searchButtonHover:hover{
 	opacity: 1;
+}
+
+div.sortBoxContainer{
+	width: 100%;
+	height: 32px;
+	-webkit-user-select: none; /* Chrome/Safari */        
+	-moz-user-select: none; /* Firefox */
+	-ms-user-select: none; /* IE10+ */
+	cursor: default;
+}
+
+div.sortBox{
+	height: 32px;
+	width: 360px;
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+div.sortBoxItem{
+	height: 32px;
+	width: 120px;
+	display: block;
+	vertical-align: middle;
+	text-align: center;
+	float: left;
+}
+
+div.sortBoxItemSelected{
+	cursor: default;
+	font-weight: bold;
+	color: #ee3434;
+}
+
+div.sortBoxItemNotSelected{
+	cursor: pointer;
+	transition: color 0.5s;
+}
+
+div.sortBoxItemNotSelected:hover{
+	color: #ee3434;
+}
+
+div.sortBoxSeparator{
+	width: 100%;
+	height: 1px;
+	background-color: #ee3434;
+}
+
+div.searchResultContainer{
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 40px;
+	padding-right: 40px;
+	width: auto;
+	cursor: pointer;
+	background-color: #fff;
+	transition: background-color 0.5s;
+}
+
+div.searchResultContainer:hover{
+	background-color: #f5f5f5;
+}
+
+div.searchResultTitle{
+	font-family: Titillium Web;
+	font-size: 18px;
+	color: #ee3434;
+	font-weight: bold;
+	margin-bottom: 10px;
+	width: auto;
+}
+
+div.searchResultContent{
+	font-family: Titillium Web;
+	font-size: 14px;
+	color: #373737;
+	width: auto;
+}
+
+div.searchResultSeparator{
+	margin-left: 140px;
+	margin-right: 140px;
+	margin-top: -1px;
+	width: auto;
+	height: 1px;
+	background-color: #ebebeb;
+}
+
+div.pageNavigationContainer{
+	width: 100%;
+	font-family: Titillium Web;
+	font-size: 14px;
+	margin-top: 30px;
+}
+
+div.pageNavigation{
+	margin-left: auto;
+	margin-right: auto;
+	height: 22px;
+	width: 240px;
+}
+
+div.pageNavigationItem{
+	width: 80px;
+	height: 22px;
+	display: block;
+	vertical-align: middle;
+	text-align: center;
+	color: #b7b7b7;
+	float: left;
 }
 
 div.headerTabs{
@@ -134,7 +268,7 @@ div.tab{
 	color: #373737;
 	width: 144px;
 	float: left;
-	cursor: default;
+	cursor: pointer;
 	transition: color 0.5s;
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
@@ -252,7 +386,7 @@ div.tag{
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
-	cursor: default;
+	cursor: pointer;
 	border-radius: 11px;
 	border:1px solid #ee3434;
 	transition: color 0.5s, background-color 0.5s;
@@ -606,5 +740,5 @@ div.commentSeparator{
 	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: #b0b0b0;
+	background-color: #ebebeb;
 }
