@@ -36,9 +36,9 @@
                 <center>
                     <div class="headerTabs">
                         <div class="tab" onclick="location.href='index.php'">Home</div>
-                        <div class="tab">Codes</div>
+                        <div class="tab">Blog</div>
                         <div class="tab">Projects</div>
-                        <div class="tab">Designs</div>
+                        <div class="tab" onclick="location.href='designs.php'">Designs</div>
                         <div class="tab">About</div>
                         <div class="tab">Contact</div>
                     </div>
@@ -60,9 +60,9 @@
                 <center>
                     <div class="headerTabs">
                         <div class="tab" onclick="location.href='index.php'">Home</div>
-                        <div class="tab">Codes</div>
+                        <div class="tab">Blog</div>
                         <div class="tab">Projects</div>
-                        <div class="tab">Designs</div>
+                        <div class="tab" onclick="location.href='designs.php'">Designs</div>
                         <div class="tab">About</div>
                         <div class="tab">Contact</div>
                     </div>
@@ -145,14 +145,14 @@
                                         <div class="emoBoxItem" title="[yum] or :b" onclick="insertEmo('yum', 'comments')"><img src="images/emoticons/yum.png"/></div>
                                     </div>
                                 <div class="commentFormRow">
-                                    <textarea id="comments" name="comment" maxlength="200" onChange="showLettersLeft('comments', 'lettersCount');" onKeyUp="showLettersLeft('comments', 'lettersCount');" onKeyDown="showLettersLeft('comments', 'lettersCount'); formatShortcut(event, this.id);"></textarea>
+                                    <textarea id="comments" name="comment" maxlength="500" onChange="showLettersLeft('comments', 'lettersCount');" onKeyUp="showLettersLeft('comments', 'lettersCount');" onKeyDown="showLettersLeft('comments', 'lettersCount'); formatShortcut(event, this.id);"></textarea>
                                     <!--Captcha/Submit/Letters Left-->
                                     <div style="width: 305px; float: left; padding-top: 8px;">
                                         <div class="g-recaptcha" data-sitekey="6LfzshATAAAAAPyQ8eprXUJGSuKu2aDIeg4fRMdY"></div>
                                     </div>
                                     <div style="width: 140px; float: left;">
                                         <div style="width: 100%; height: 36px; font-size: 14px; color: #373737; font-family: Titillium Web; text-align: right;" id="lettersCount">
-                                            200 letters left
+                                            500 letters left
                                         </div>
                                         <div style="width: 100%; height: 45px; margin-left: 20px;">
                                             <input id="submitButton" type="submit" name="add" value="SUBMIT">

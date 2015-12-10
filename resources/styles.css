@@ -38,39 +38,39 @@ a:active {
 	color: #EE3434;
 }
 
-div.noSelection{
+.noSelection{
 	-webkit-user-select: none; /* Chrome/Safari */        
 	-moz-user-select: none; /* Firefox */
 	-ms-user-select: none; /* IE10+ */
 }
 
-div.defaultText{
+.defaultText{
 	font-family: Titillium Web;
 	font-size: 14px;
 	color: #373737;
 }
 
-div.defaultCursor{
+.defaultCursor{
 	cursor: default;
 }
 
-div.pointCursor{
+.pointCursor{
 	cursor: pointer;
 }
 
-div.headerContainer{
+.headerContainer{
 	background-color: #fff;
 	width: 100%;
 }
 
-div.header{
+.header{
 	height: 187px;
 	background-image: url(../images/logo.jpg);
 	background-repeat: no-repeat;
 	background-position: 104px 100px;
 }
 
-div.searchBox{
+.searchBox{
 	height: 34px;
 	width: 248px;
 	background-color: red;
@@ -79,7 +79,7 @@ div.searchBox{
 	margin-right: 72px;
 }
 
-div.searchTextWrapper{
+.searchTextWrapper{
 	width: 214px;
 	height: 32px;
 	float: left;
@@ -103,7 +103,7 @@ input.searchText:focus{
 	border: 1px solid #ee3434;
 }
 
-div.searchButton{
+.searchButton{
 	width: 32px;
 	height: 34px;
 	background-image: url(../images/search_button.jpg);
@@ -114,7 +114,7 @@ div.searchButton{
 	cursor: pointer;
 }
 
-div.searchButtonHover{
+.searchButtonHover{
 	width: 32px;
 	height: 34px;
 	background-image: url(../images/search_button_hover.jpg);
@@ -124,11 +124,11 @@ div.searchButtonHover{
 	transition: opacity 0.5s;
 }
 
-div.searchButtonHover:hover{
+.searchButtonHover:hover{
 	opacity: 1;
 }
 
-div.sortBoxContainer{
+.sortBoxContainer{
 	width: 100%;
 	height: 32px;
 	-webkit-user-select: none; /* Chrome/Safari */        
@@ -137,7 +137,7 @@ div.sortBoxContainer{
 	cursor: default;
 }
 
-div.sortBox{
+.sortBox{
 	height: 32px;
 	width: 360px;
 	font-family: Titillium Web;
@@ -147,7 +147,7 @@ div.sortBox{
 	margin-right: auto;
 }
 
-div.sortBoxItem{
+.sortBoxItem{
 	height: 32px;
 	width: 120px;
 	display: block;
@@ -156,28 +156,28 @@ div.sortBoxItem{
 	float: left;
 }
 
-div.sortBoxItemSelected{
+.sortBoxItemSelected{
 	cursor: default;
 	font-weight: bold;
 	color: #ee3434;
 }
 
-div.sortBoxItemNotSelected{
+.sortBoxItemNotSelected{
 	cursor: pointer;
 	transition: color 0.5s;
 }
 
-div.sortBoxItemNotSelected:hover{
+.sortBoxItemNotSelected:hover{
 	color: #ee3434;
 }
 
-div.sortBoxSeparator{
+.sortBoxSeparator{
 	width: 100%;
 	height: 1px;
 	background-color: #ee3434;
 }
 
-div.searchResultContainer{
+.searchResultContainer{
 	padding-top: 20px;
 	padding-bottom: 20px;
 	padding-left: 40px;
@@ -188,11 +188,11 @@ div.searchResultContainer{
 	transition: background-color 0.5s;
 }
 
-div.searchResultContainer:hover{
+.searchResultContainer:hover{
 	background-color: #f5f5f5;
 }
 
-div.searchResultTitle{
+.searchResultTitle{
 	font-family: Titillium Web;
 	font-size: 18px;
 	color: #ee3434;
@@ -201,14 +201,14 @@ div.searchResultTitle{
 	width: auto;
 }
 
-div.searchResultContent{
+.searchResultContent{
 	font-family: Titillium Web;
 	font-size: 14px;
 	color: #373737;
 	width: auto;
 }
 
-div.searchResultSeparator{
+.searchResultSeparator{
 	margin-left: 140px;
 	margin-right: 140px;
 	margin-top: -1px;
@@ -217,21 +217,21 @@ div.searchResultSeparator{
 	background-color: #ebebeb;
 }
 
-div.pageNavigationContainer{
+.pageNavigationContainer{
 	width: 100%;
 	font-family: Titillium Web;
 	font-size: 14px;
 	margin-top: 30px;
 }
 
-div.pageNavigation{
+.pageNavigation{
 	margin-left: auto;
 	margin-right: auto;
 	height: 22px;
 	width: 240px;
 }
 
-div.pageNavigationItem{
+.pageNavigationItem{
 	width: 80px;
 	height: 22px;
 	display: block;
@@ -241,25 +241,26 @@ div.pageNavigationItem{
 	float: left;
 }
 
-div.headerTabs{
+.headerTabs{
 	width: 864px;
 	height: 43px;
 }
 
-div.headerFollowupTabs{
+.headerFollowupTabs{
 	visibility: hidden;
 	position: fixed;
+	z-index: 1;
 	width: 100%;
 	background-color: #fff;
 }
 
-div.headerSeparator{
+.headerSeparator{
 	height: 5px;
 	width: 100%;
 	background-color: #ee3434;
 }
 
-div.tab{
+.tab{
 	height: 40px;
 	padding-top: 3px;
 	background-color: #fff;
@@ -275,11 +276,11 @@ div.tab{
 	-ms-user-select: none; /* IE10+ */
 }
 
-div.tab:hover{
+.tab:hover{
 	color: #ee3434;
 }
 
-div.tabSelected{
+.tabSelected{
 	height: 40px;
 	padding-top: 3px;
 	background-color: #ee3434;
@@ -294,7 +295,7 @@ div.tabSelected{
 	-ms-user-select: none; /* IE10+ */
 }
 
-div.filterTitle{
+.filterTitle{
 	background-color: #fff;
 	font-family: Titillium Web;
 	font-size: 24px;
@@ -308,7 +309,7 @@ div.filterTitle{
 	font-weight: bold;
 }
 
-div.postsBody{
+.postsBody{
 	width: 864px;
 	background-color: #fff;
 	margin-left: auto;
@@ -319,18 +320,18 @@ div.postsBody{
 	border: solid 1px #ebebeb;
 }
 
-div.postContainer{
+.postContainer{
 	width: 100%;
 	overflow: hidden;
 }
 
-div.postHeader{
+.postHeader{
 	width: 100%;
 	min-height: 50px;
 	overflow: hidden;
 }
 
-div.postHeaderTitle{
+.postHeaderTitle{
 	margin-top: 5px;
 	margin-bottom: 5px;
 	margin-left: 24px;
@@ -342,7 +343,7 @@ div.postHeaderTitle{
 	overflow: hidden;
 }
 
-div.postHeaderSeparator{
+.postHeaderSeparator{
 	width: 100%;
 	height: 2px;
 	background-color: #ee3434;
@@ -352,11 +353,11 @@ div.postHeaderSeparator{
 	overflow: hidden;
 }
 
-div.postBody{
+.postBody{
 	width: 100%;
 }
 
-div.postInfo{
+.postInfo{
 	margin-left: 24px;
 	margin-top: 5px;
 	font-family: Titillium Web;
@@ -364,7 +365,7 @@ div.postInfo{
 	color: #5F5F5F;
 }
 
-div.postBodyContent{
+.postBodyContent{
 	font-family: Titillium Web;
 	color: #373737;
 	font-size: 18px;
@@ -375,7 +376,7 @@ div.postBodyContent{
 	overflow: hidden;
 }
 
-div.tag{
+.tag{
 	font-size: 14px;
 	color: #fff;
 	font-family: Titillium Web;
@@ -395,12 +396,12 @@ div.tag{
 	margin-top: 5px;
 }
 
-div.tagsWrapper{
+.tagsWrapper{
 	width: 100%;
 	margin-top: 10px;
 }
 
-div.tag:hover{
+.tag:hover{
 	background-color: #fff;
 	color: #ee3434;
 }
@@ -412,62 +413,62 @@ img.globalImageStyle{
 	margin-top: 20px;
 }
 
-div.commentSection{
+.commentSection{
 	width: 794px;
 	padding-top: 20px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-div.commentFormRow{
+.commentFormRow{
 	width: 100%;
 	height: 30px;
 	padding-bottom: 10px;
 }
 
-div.commentFormattingBox{
+.commentFormattingBox{
 	width: 32px;
 	height: 32px;
 	margin-right: 8px;
 	float: left;
 }
 
-div.formatBold{
+.formatBold{
 	background-image: url(../images/format_bold.jpg);
 }
 
-div.formatItalic{
+.formatItalic{
 	background-image: url(../images/format_italic.jpg);
 }
 
-div.formatEmo{
+.formatEmo{
 	background-image: url(../images/format_emo.jpg);
 }
 
-div.formatBoldHover{
+.formatBoldHover{
 	background-image: url(../images/format_bold_hover.jpg);
 }
 
-div.formatInnerHover{
+.formatInnerHover{
 	opacity: 0;
 	width: 32px;
 	height: 32px;
 	transition: opacity 0.5s;
 }
 
-div.formatInnerHover:hover{
+.formatInnerHover:hover{
 	opacity: 1;
 }
 
-div.formatItalicHover{
+.formatItalicHover{
 	background-image: url(../images/format_italic_hover.jpg);
 }
 
-div.formatEmoHover{
+.formatEmoHover{
 	background-image: url(../images/format_emo_hover.jpg);
 }
 
-div.emoBox{
+.emoBox{
 	width: 449px;
 	height: 0px;
 	padding-left: 3px;
@@ -482,7 +483,7 @@ div.emoBox{
 	-ms-user-select: none; /* IE10+ */
 }
 
-div.emoBoxItem{
+.emoBoxItem{
 	width: 18px;
 	height: 18px;
 	padding: 4px;
@@ -492,12 +493,12 @@ div.emoBoxItem{
 	transition: background-color 0.25s, opacity 0.25s;
 }
 
-div.emoBoxItem:hover{
+.emoBoxItem:hover{
 	background-color: #ddd;
 	opacity: 1;
 }
 
-div.footer{
+.footer{
 	height: 183px;
 	background-color: #ee3434;
 	position: absolute;
@@ -507,7 +508,7 @@ div.footer{
 	display: inline-table;
 }
 
-div.footerLeft{
+.footerLeft{
 	height: 183px;
 	width: 218px;
 	display: table-cell;
@@ -518,7 +519,7 @@ div.footerLeft{
 	-ms-user-select: none; /* IE10+ */
 }
 
-div.footerCenter{
+.footerCenter{
 	height: 183px;
 	display: table-cell;
 	align-items: center;
@@ -529,7 +530,7 @@ div.footerCenter{
 	vertical-align: middle;
 }
 
-div.footerRight{
+.footerRight{
 	width: 301px;
 	height: 183px;
 	background-image: url(../images/footer_logo.jpg);
@@ -538,69 +539,69 @@ div.footerRight{
 	display: table-cell;
 }
 
-div.footerLeftIcon{
+.footerLeftIcon{
 	width: 50px;
 	height: 50px;
 	float: left;
 	margin: 7px;
 }
 
-div.footerLeftIconInner{
+.footerLeftIconInner{
 	width: 50px;
 	height: 50px;
 	opacity: 0;
 	transition: opacity 0.5s;
 }
 
-div.footerLeftIconInner:hover{
+.footerLeftIconInner:hover{
 	opacity: 1;
 }
 
-div.footerLeftIconFacebook{
+.footerLeftIconFacebook{
 	background-image: url(../images/social_facebook.jpg);
 }
 
-div.footerLeftIconTwitter{
+.footerLeftIconTwitter{
 	background-image: url(../images/social_twitter.jpg);
 }
 
-div.footerLeftIconLinkedin{
+.footerLeftIconLinkedin{
 	background-image: url(../images/social_linkedin.jpg);
 }
 
-div.footerLeftIconGithub{
+.footerLeftIconGithub{
 	background-image: url(../images/social_github.jpg);
 }
 
-div.footerLeftIconScirra{
+.footerLeftIconScirra{
 	background-image: url(../images/social_scirra.jpg);
 }
 
-div.footerLeftIconNewgrounds{
+.footerLeftIconNewgrounds{
 	background-image: url(../images/social_newgrounds.jpg);
 }
 
-div.footerLeftIconFacebookHover{
+.footerLeftIconFacebookHover{
 	background-image: url(../images/social_facebook_hover.jpg);
 }
 
-div.footerLeftIconTwitterHover{
+.footerLeftIconTwitterHover{
 	background-image: url(../images/social_twitter_hover.jpg);
 }
 
-div.footerLeftIconLinkedinHover{
+.footerLeftIconLinkedinHover{
 	background-image: url(../images/social_linkedin_hover.jpg);
 }
 
-div.footerLeftIconGithubHover{
+.footerLeftIconGithubHover{
 	background-image: url(../images/social_github_hover.jpg);
 }
 
-div.footerLeftIconScirraHover{
+.footerLeftIconScirraHover{
 	background-image: url(../images/social_scirra_hover.jpg);
 }
 
-div.footerLeftIconNewgroundsHover{
+.footerLeftIconNewgroundsHover{
 	background-image: url(../images/social_newgrounds_hover.jpg);
 }
 
@@ -645,7 +646,7 @@ input[type=submit]:hover{
 	color: #ee3434;
 }
 
-div.commentLabel{
+.commentLabel{
 	height: 42px;
 	width: 100%;
 	font-family: Titillium Web;
@@ -672,14 +673,14 @@ textarea{
 	outline-color: #ee3434;
 }
 
-div.notificationHeader{
+.notificationHeader{
 	word-wrap: break-word;
 	font-family: Titillium Web;
 	font-size: 18px;
 	color: #ee3434;
 }
 
-div.notificationContent{
+.notificationContent{
 	word-wrap: break-word;
 	font-family: Titillium Web;
 	font-size: 14px;
@@ -687,7 +688,7 @@ div.notificationContent{
 	margin-top: 5px;
 }
 
-div.commentTitle{
+.commentTitle{
 	width: 100%;
 	color: #ee3434;
 	font-family: Titillium Web;
@@ -699,14 +700,14 @@ div.commentTitle{
 	-ms-user-select: none; /* IE10+ */
 }
 
-div.commentHeader{
+.commentHeader{
 	width: 750px;
 	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-div.commenterName{
+.commenterName{
 	font-family: Titillium Web;
 	font-size: 14px;
 	color: #5F5F5F;
@@ -715,7 +716,7 @@ div.commenterName{
 	float: left;
 }
 
-div.commentDate{
+.commentDate{
 	font-family: Titillium Web;
 	font-size: 14px;
 	color: #5F5F5F;
@@ -724,7 +725,7 @@ div.commentDate{
 	float: right;
 }
 
-div.commentContent{
+.commentContent{
 	font-family: Titillium Web;
 	font-size: 14px;
 	color: #373737;
@@ -734,11 +735,246 @@ div.commentContent{
 	word-wrap: break-word;
 }
 
-div.commentSeparator{
+.commentSeparator{
 	width: 770px;
 	height: 1px;
 	margin-top: 15px;
 	margin-left: auto;
 	margin-right: auto;
 	background-color: #ebebeb;
+}
+
+.designThumbnailWrapper{
+	width: 200px;
+	height: 200px;
+	overflow: hidden;
+	float: left;
+	opacity: 0.75;
+	transition: opacity 0.5s;
+}
+
+.designThumbnailWrapper:hover{
+	opacity: 1;
+}
+
+.designGallery{
+	width: 800px;
+	padding: 32px;
+	position: relative;
+	z-index: 0;
+}
+
+.designThumbnail{
+	width: 200px;
+	height: 200px;
+	visibility: hidden;
+}
+
+.designThumbnailLoading{
+	width: 200px;
+	height: 200px;
+	visibility: visible;
+	background-image: url(../images/loading.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.overallShadow{
+	visibility: hidden;
+	width: 100%;
+	height: 100%;
+	background-color: #000;
+	opacity: 0;
+	position: fixed;
+	z-index: 2;
+	transition: opacity 0.5s
+}
+
+.photoWindow{
+	visibility: hidden;
+	width: 0px;
+	height: 0px;
+	opacity: 0;
+	margin: auto;
+	position: fixed;
+	z-index: 3;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: #fff;
+	transition: height 0.5s, width 0.5s, opacity 0.5s;
+}
+
+.photoWindowView{
+	float: left;
+	height: 100%;
+	width: 540px;
+	background-color: #f5f5f5;
+	opacity: 0;
+	transition: opacity 0.25s;
+}
+
+.photoWindowImage{
+	width: 100%;
+	height: 100%;
+	background-size: contain;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.photoWindowImageControls{
+	width: 540px;
+	height: 128px;
+	padding-top: 186px;
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.photoWindowImageControlsNavigationButton{
+	height: 128px;
+	width: 50px;
+	float: left;
+	opacity: 0.5;
+	transition: opacity 0.5s;
+}
+
+.photoWindowImageControlsNavigationButton:hover{
+	opacity: 0.75;
+}
+
+.photoWindowImageControlPrev{
+	background-image: url(../images/navigation_prev.jpg);
+}
+
+.photoWindowImageControlNext{
+	background-image: url(../images/navigation_next.jpg);
+}
+
+.photoWindowImageControlsFullscreenWrapper{
+	width: 440px;
+	height: 128px;
+	float: left;
+}
+
+.photoWindowImageControlFullscreenButton{
+	width: 50px;
+	height: 51px;
+	margin: auto;
+	margin-top: 39px;
+	background-image: url(../images/fullscreen.jpg);
+	opacity: 0.5;
+	transition: opacity 0.5s;
+}
+
+.photoWindowImageControlFullscreenButton:hover{
+	opacity: 0.75;
+}
+
+.photoWindowDetails{
+	float: right;
+	height: 100%;
+	width: 324px;
+	background-color: #fff;
+	opacity: 0;
+	transition: opacity 0.25s;
+}
+
+.photoWindowCloseButtonWrapper{
+	width: 314px;
+	height: 16px;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+
+.photoWindowCloseButton{
+	float: right;
+	width: 16px;
+	height: 16px;
+	background-image: url(../images/close_button.jpg);
+}
+
+.photoWindowCloseButtonHover{
+	width: 16px;
+	height: 16px;
+	background-image: url(../images/close_button_hover.jpg);
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.photoWindowCloseButtonHover:hover{
+	opacity: 1;
+}
+
+.photoWindowTitle{
+	width: 260px;
+	height: 36px;
+	margin-left: 22px;
+	margin-right: 22px;
+	margin-bottom: 5px;
+	font-family: Titillium Web;
+	color: #ee3434;
+	font-size: 24px;
+	overflow: hidden;
+}
+
+.photoWindowTitleSeparator{
+	width: 324px;
+	height: 2px;
+	background-color: #ee3434;
+}
+
+.photoWindowDescription{
+	width: 280px;
+	padding: 22px;
+	padding-bottom: 0px;
+}
+
+.photoWindowDescriptionWrapper{
+	width: 100%;
+	height: 357px;
+	padding-bottom: 22px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.photoWindowToolbox{
+	width: 100%;
+	height: 50px;
+}
+
+.photoWindowToolboxItem{
+	width: 50px;
+	height: 50px;
+	float: left;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.photoWindowToolboxItemLink{
+	background-image: url(../images/photo_tool_link.jpg);
+}
+
+.photoWindowToolboxItemLinkHover{
+	background-image: url(../images/photo_tool_link_hover.jpg);
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.photoWindowToolboxItemLinkHover:hover{
+	opacity: 1;
+}
+
+.photoWindowToolboxItemDownload{
+	background-image: url(../images/photo_tool_download.jpg);
+}
+
+.photoWindowToolboxItemDownloadHover{
+	background-image: url(../images/photo_tool_download_hover.jpg);
+	opacity: 0;
+	transition: opacity 0.5s;
+}
+
+.photoWindowToolboxItemDownloadHover:hover{
+	opacity: 1;
 }

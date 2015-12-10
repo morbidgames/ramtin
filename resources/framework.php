@@ -1,4 +1,78 @@
 <?php
+
+class Design
+{
+	private $id = 0;
+	private $title = "";
+	private $date = "";
+	private $category = "";
+	private $description = "";
+	private $tags = array();
+	private $image = "";
+	private $designer = "";
+
+	function __construct($id, $title, $date, $category, $description, $tags, $image, $designer)
+	{
+		$this->setId($id);
+		$this->setTitle($title);
+		$this->setDate($date);
+		$this->setCategory($category);
+		$this->setDescription($description);
+		$this->setTags($tags);
+		$this->setImage($image);
+		$this->setDesigner($designer);
+	}
+
+	public function getId() 			{ return $this->id; }
+	public function getTitle() 			{ return $this->title; }
+	public function getDate() 			{ return $this->date; }
+	public function getCategory() 		{ return $this->category; }
+	public function getDescription() 	{ return $this->description; }
+	public function getTags() 			{ return $this->tags; }
+	public function getImage()			{ return $this->image; }
+	public function getDesigner() 		{ return $this->designer; }
+
+	public function setId($id)
+	{
+		if (isset($id)) $this->id = $id;
+	}
+
+	public function setTitle($title)
+	{
+		if (isset($title)) $this->title = $title;
+	}
+
+	public function setDate($date)
+	{
+		if (isset($date)) $this->date = $date;
+	}
+
+	public function setCategory($category)
+	{
+		if (isset($category)) $this->category = $category;
+	}
+
+	public function setDescription($description)
+	{
+		if (isset($description)) $this->description = $description;
+	}
+
+	public function setTags($tags)
+	{
+		if (isset($tags)) $this->tags = $tags;
+	}
+
+	public function setImage($image)
+	{
+		if (isset($image)) $this->image = $image;
+	}
+
+	public function setDesigner($designer)
+	{
+		if (isset($designer)) $this->designer = $designer;
+	}
+}
+
 class Match
 {
 	private $id = 0;
@@ -115,6 +189,7 @@ class Ramtin
 	private static $lastPage = 0;				//To be set after each search()
 	private static $searchFlag = TRUE;			//True: success, False: invalid parameters
 	private static $RESULTS_CHAR_LIMIT = 450;	//To limit the amount of characters that will be shown for each result followed by ellipsis
+	private static $designs = array();			//To hold all design objects
 
 	private static function validateParam($param)
 	{

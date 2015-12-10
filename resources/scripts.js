@@ -481,3 +481,109 @@ function stylizeText(comment, openSyntax, closeSyntax, openHTML, closeHTML)
 
 	return comment;
 }
+
+function createThumbnail(img)
+{
+	trimImage(img, 200, 200);
+
+    //Hide loading image
+	var wrapper = img.parentElement.parentElement;
+	var siblings = wrapper.children;
+
+	for(var i = 0; i < siblings.length; i++)
+	{
+		if(siblings[i].className == "designThumbnailLoading")
+		{
+			wrapper.removeChild(siblings[i]);
+			break;
+		}
+	}
+
+    img.style.visibility = "visible";
+    img.setAttribute("data-state", "loaded");
+}
+
+function trimImage(img, width, height)
+{
+	//Trim the image
+	var hratio = img.height / img.width;
+    var wratio = img.width / img.height;
+
+    if (img.width < img.height)
+    {
+        img.width = width;
+        img.height = height * hratio;
+        img.style.marginTop = String((img.height - height) / -2) + "px";
+    }
+    else
+    {
+        img.height = height;
+        img.width = width * wratio;
+        img.style.marginLeft = String((img.width - width) / -2) + "px";
+    }
+}
+
+function showDesign(design)
+{
+	if (design.getAttribute("data-state") == "loading")
+		return;
+
+	photoWindow = document.getElementsByClassName("photoWindow")[0];
+	overallShadow = document.getElementsByClassName("overallShadow")[0];
+
+	photoWindow.style.visibility = "visible";
+	overallShadow.style.visibility = "visible";
+
+	overallShadow.style.opacity = "0.85";
+	photoWindow.style.opacity = "1";
+
+	photoWindow.style.width = "864px";
+	photoWindow.style.height = "500px";
+
+	photoWindowImage = document.getElementsByClassName("photoWindowImage")[0];
+	photoWindowImage.style.backgroundImage = "url(" + design.src + ")";
+
+	window.setTimeout(function(){switchDesignContent(true)}, 510);
+}
+
+function switchDesignContent(visibility)
+{
+	console.log("fired");
+	photoView = document.getElementsByClassName("photoWindowView")[0];
+	photoDetails = document.getElementsByClassName("photoWindowDetails")[0];
+
+	photoView.style.opacity = (visibility?"1":"0");
+	photoDetails.style.opacity = (visibility?"1":"0");
+}
+
+function hideDesign()
+{
+	switchDesignContent(false);
+	window.setTimeout(hideDesignWindow, 250);
+}
+
+function hideDesignWindow()
+{
+	photoWindow = document.getElementsByClassName("photoWindow")[0];
+	overallShadow = document.getElementsByClassName("overallShadow")[0];
+
+	photoWindow.style.opacity = "0";
+	overallShadow.style.opacity = "0";
+
+	photoWindow.style.width = "0px";
+	photoWindow.style.height = "0px";
+
+	window.setTimeout(disableDesignWindow, 500);
+}
+
+function disableDesignWindow()
+{
+	photoWindow.style.visibility = "hidden";
+	overallShadow.style.visibility = "hidden";
+}
+
+function switchImageControls(visibility)
+{
+	controls = document.getElementsByClassName("photoWindowImageControls")[0];
+	controls.style.opacity = (visibility?"1":"0");
+}

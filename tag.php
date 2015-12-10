@@ -35,9 +35,9 @@
                 <center>
                     <div class="headerTabs">
                         <div class="tab" onclick="location.href='index.php'">Home</div>
-                        <div class="tab">Codes</div>
+                        <div class="tab">Blog</div>
                         <div class="tab">Projects</div>
-                        <div class="tab">Designs</div>
+                        <div class="tab" onclick="location.href='designs.php'">Designs</div>
                         <div class="tab">About</div>
                         <div class="tab">Contact</div>
                     </div>
@@ -59,9 +59,9 @@
                 <center>
                     <div class="headerTabs">
                         <div class="tab" onclick="location.href='index.php'">Home</div>
-                        <div class="tab">Codes</div>
+                        <div class="tab">Blog</div>
                         <div class="tab">Projects</div>
-                        <div class="tab">Designs</div>
+                        <div class="tab" onclick="location.href='designs.php'">Designs</div>
                         <div class="tab">About</div>
                         <div class="tab">Contact</div>
                     </div>
